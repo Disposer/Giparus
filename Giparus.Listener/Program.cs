@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using Giparus.Core.Logger;
-using Giparus.Core.Settings;
+using System.Linq;
+using Giparus.TeltonikaDriver.Tcp;
+using Giparus.TeltonikaDriver;
 
 namespace Giparus.Listener
 {
@@ -49,7 +49,7 @@ namespace Giparus.Listener
 
         private void ListenToPort(object state)
         {
-            if (_started) { GiparusLog.LogError("'ListenToPort' went wrong", "Duplicate listener", GiparusLog.Listener); }
+            if (_started) { Console.WriteLine("'ListenToPort' went wrong"+ "Duplicate listener"); }
             else _started = true;
 
             try
@@ -57,11 +57,11 @@ namespace Giparus.Listener
                 _listener = new TcpListener(IPAddress.Any, _port);
                 _listener.Start();
 
-                GiparusLog.Log("Listenning at: " + _listener.LocalEndpoint);
+                Console.WriteLine("Listenning at: " + _listener.LocalEndpoint);
             }
             catch (Exception exception)
             {
-                GiparusLog.LogError("'_listener.Start()' went wrong", exception.Message);
+                Console.WriteLine("'_listener.Start()' went wrong", exception.Message);
                 throw;
             }
 
@@ -78,7 +78,7 @@ namespace Giparus.Listener
 
                     TcpClient client;
                     lock (_locker) { client = _listener.AcceptTcpClient(); }
-                    GiparusLog.Log(DateTime.Now + " @Client connected at " + client.Client.RemoteEndPoint);
+                    Console.WriteLine(DateTime.Now + " @Client connected at " + client.Client.RemoteEndPoint);
 
                     //Create a thread to handle communication
                     var clientThread = new Thread(this.ClientHandler)
@@ -88,7 +88,7 @@ namespace Giparus.Listener
                     };
                     clientThread.Start(client);
                 }
-                catch (Exception exception) { GiparusLog.LogError("'_listener.AcceptTcpClient()' went wrong", exception.Message); }
+                catch (Exception exception) { Console.WriteLine("'_listener.AcceptTcpClient()' went wrong"+ exception.Message); }
             }
         }
 
@@ -98,95 +98,84 @@ namespace Giparus.Listener
             //tcpClient.NoDelay = true;
 
             var stream = tcpClient.GetStream();
-            var buffer = new byte[ListenerSettings.Instance.BufferSize];
+
+            var imei = this.ReadImei(stream);
+            Console.WriteLine(imei);
+
+            this.Accept(stream);
+
             try
             {
-                // Get first ResponseBase                    
-                var length = stream.Read(buffer, 0, ListenerSettings.Instance.BufferSize);
+                var memoryStream = this.ReadData(stream);
+                var packet = PacketParser.Parse<AvlTcpPacket>(memoryStream);
+                if (memoryStream.Position != memoryStream.Length)
+                    throw new InvalidDataException("unfinished avl packet");
 
-                if (buffer[0] != 0 || buffer[1] != 0x0f) throw new InvalidDataException("Wrong IMEI");
-                var imei = Encoding.ASCII.GetString(buffer, 0, length);
-                Console.WriteLine(imei);
+                var avlData=packet.GetAvlDataArray().GetAvlData();
+                
 
-                // 1 as byte array response will determine if it would accept data from this module.
-                var answer = BitConverter.GetBytes(1);
-                stream.Write(answer, 0, answer.Length);
 
-                buffer.Initialize();
-
-                length = stream.Read(buffer, 0, ListenerSettings.Instance.BufferSize);
-
-                var file = new byte[length];
-                Array.Copy(buffer, file, length);
-                File.WriteAllBytes("c:\\" + new Random().Next() + ".avldata", file);
-
-                var state = State.StartReading;
-                var index = 0;
-                var avrDataArrayLenght = -1;
-                var codeId = -1;
-                var dataElements = -1;
-                var crc = -1;
-                byte[] data = null;
-
-                while (index < length)
-                {
-                    switch (state)
-                    {
-                        case State.StartReading:
-                            var starter = BitConverter.ToInt32(buffer, index);
-                            if (starter != 0) throw new DataException(string.Format("Wrong data at '{0}'", index));
-                            index += 4;
-
-                            avrDataArrayLenght = BitConverter.ToInt32(buffer, index);
-                            index += 4;
-
-                            state = State.ReadDataArray;
-                            break;
-
-                        case State.ReadInfo:                          
-                            var dataSize = length - index - 1; // Last 1 is for crc
-                            data = new byte[dataSize];
-
-                            Array.Copy(buffer, index, data, 0, dataSize);
-                            state = State.ReadDataArray;
-
-                            break;
-
-                        case State.ReadDataArray:
-                            codeId = buffer[index++];
-                            dataElements = buffer[index++];
-
-                            break;
-
-                        case State.Crc:
-                            crc = buffer[length - 1];
-                            break;
-                    }
-                }
-
-                //data = String.Concat(data, Encoding.ASCII.GetString(buffer, 0, length));
+                //var file = new byte[length];
+                //Array.Copy(buffer, file, length);
+                //File.WriteAllBytes("c:\\" + new Random().Next() + ".avldata", file);
 
             }
             catch (Exception exception)
             {
+                //TODO: write 00 as response to resend the packet
+
                 //a socket error has occured
-                GiparusLog.LogError("'stream.Read()' went wrong", exception.Message);
+                Console.WriteLine("'stream.Read()' went wrong" + exception.Message);
             }
+        }
+
+        private void Accept(NetworkStream stream)
+        {
+            // 1 as byte array response will determine if it would accept data from this module.
+            this.Response(1, stream);
+        }
+
+        private void Response(int count, NetworkStream stream)
+        {
+            var answer = BitConverter.GetBytes(1).Reverse().ToArray();
+            stream.Write(answer, 0, answer.Length);
+        }
+
+        private void Reject(NetworkStream stream)
+        {
+            // 0 as byte array response will determine if it would reject data from this module.
+            this.Response(0, stream);
+        }
+
+        private  string ReadImei(NetworkStream stream)
+        {
+            var buffer = new byte[128]; //IMEI buffer
+            var length = stream.Read(buffer, 0, buffer.Length);
+
+            if (buffer[0] != 0 || buffer[1] != 0x0f) throw new InvalidDataException("Wrong IMEI");
+            var imei = Encoding.ASCII.GetString(buffer, 2, length-2);
+            return imei;
+        }
+
+        private MemoryStream ReadData(NetworkStream stream)
+        {
+            var buffer = new byte[4096];
+
+            var memoryStream = new MemoryStream();
+
+            while (true)
+            {
+                var length = stream.Read(buffer, 0, buffer.Length);
+                if (length == 0 ) break;
+                memoryStream.Write(buffer, 0, length);
+                if (!stream.DataAvailable) break;
+            }
+
+            memoryStream.Position = 0;
+            return memoryStream;
         }
         #endregion
 
-        //public T Read<T>(byte[] buffer, ref int index) where T : struct
-        //{
-        //    BitConverter.to
-        //    index += Marshal.SizeOf(typeof (T));
-        //}
     }
 
-    public enum State
-    {
-        StartReading,
-        ReadInfo,
-        ReadDataArray,
-        Crc,
-    }
 }
