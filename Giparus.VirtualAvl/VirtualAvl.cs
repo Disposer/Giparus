@@ -1,11 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Giparus.VirtualAvl
 {
-    public class VirtualAmi
+    public class VirtualAvl
     {
         #region Fields
         private readonly int _port;
@@ -20,7 +22,7 @@ namespace Giparus.VirtualAvl
         #endregion
 
 
-        public VirtualAmi(int id, int port, IPAddress server)
+        public VirtualAvl(int id, int port, IPAddress server)
         {
             _port = port;
             _server = server;
@@ -49,8 +51,15 @@ namespace Giparus.VirtualAvl
                 }
 
                 var stream = _client.GetStream();
-                var buffer = Encoding.ASCII.GetBytes("Hello");
-                try { stream.Write(buffer, 0, buffer.Length); }
+
+                var imei = "123456789012345";
+                var imeiBuffer = Encoding.ASCII.GetBytes(imei);
+                var memoryStream = new MemoryStream();
+                memoryStream.WriteByte(0);
+                memoryStream.WriteByte(15);
+                memoryStream.Write(imeiBuffer, 0, imeiBuffer.Length);
+
+                try { stream.Write(memoryStream.ToArray(), 0,(int)memoryStream.Length); }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
@@ -62,8 +71,23 @@ namespace Giparus.VirtualAvl
                 try
                 {
                     var readCounts = stream.Read(readBuffer, 0, readBuffer.Length);
-                    var listenerCoomand = Encoding.ASCII.GetString(readBuffer, 0, readCounts);
-                    Console.WriteLine(listenerCoomand);
+                    var listenerResponse = Encoding.ASCII.GetString(readBuffer, 0, readCounts);
+
+                    //if (listenerResponse == "0001")
+                    {
+                        var path0 = @"..\..\..\SampleData\321666841.avldata";
+                        var path1 = @"..\..\..\SampleData\400600440.avldata";
+                        var path2 = @"..\..\..\SampleData\1399292567.avldata"; 
+
+                        var gpsData = File.ReadAllBytes(path0);
+
+                        stream.Write(gpsData, 0, gpsData.Length);
+                    }
+                    //else if (listenerResponse == "0000")
+                    {
+                    }
+
+                    Thread.Sleep(1 * 60 * 1000);
                 }
                 catch (Exception ex)
                 {

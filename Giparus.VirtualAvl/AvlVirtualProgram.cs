@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Giparus.VirtualAvl
 {
-    public class AmiVirtualProgram
+    public class AvlVirtualProgram
     {
         public const int COUNT = 1;
 
@@ -43,7 +43,7 @@ namespace Giparus.VirtualAvl
             {
                 //Thread.Sleep(5);
                 Console.WriteLine("Creating virtual avl: " + counter);
-                var virtualAmi = new VirtualAmi(counter, _port, _server);
+                var virtualAmi = new VirtualAvl(counter, _port, _server);
                 var workerThread = new Thread(arg => virtualAmi.StartAmi())
                 {
                     Name = "AvlVirtual" + counter,
