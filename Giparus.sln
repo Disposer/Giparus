@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Core", "Giparus.Core\Giparus.Core.csproj", "{705E23C7-0E99-4D81-AAE2-5B1413A0E1F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Listener", "Giparus.Listener\Giparus.Listener.csproj", "{E49CF328-9F72-49F8-9292-BB2EE25D61D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.WebService", "Giparus.WebService\Giparus.WebService.csproj", "{C28880DC-85A2-4898-AAEA-45E000A22BF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Core.Logger", "Giparus.Core.Logger\Giparus.Core.Logger.csproj", "{A9317F26-BD63-4FFD-B63A-1A91779BB9D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.VirtualAvl", "Giparus.VirtualAvl\Giparus.VirtualAvl.csproj", "{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleData", "SampleData", "{BEF8CEC5-C4A0-486A-B3C8-675B3B0EBB1C}"
+	ProjectSection(SolutionItems) = preProject
+		SampleData\1399292567.avldata = SampleData\1399292567.avldata
+		SampleData\321666841.avldata = SampleData\321666841.avldata
+		SampleData\400600440.avldata = SampleData\400600440.avldata
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{705E23C7-0E99-4D81-AAE2-5B1413A0E1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705E23C7-0E99-4D81-AAE2-5B1413A0E1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705E23C7-0E99-4D81-AAE2-5B1413A0E1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705E23C7-0E99-4D81-AAE2-5B1413A0E1F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E49CF328-9F72-49F8-9292-BB2EE25D61D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E49CF328-9F72-49F8-9292-BB2EE25D61D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E49CF328-9F72-49F8-9292-BB2EE25D61D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E49CF328-9F72-49F8-9292-BB2EE25D61D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28880DC-85A2-4898-AAEA-45E000A22BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28880DC-85A2-4898-AAEA-45E000A22BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28880DC-85A2-4898-AAEA-45E000A22BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28880DC-85A2-4898-AAEA-45E000A22BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9317F26-BD63-4FFD-B63A-1A91779BB9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9317F26-BD63-4FFD-B63A-1A91779BB9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9317F26-BD63-4FFD-B63A-1A91779BB9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9317F26-BD63-4FFD-B63A-1A91779BB9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
