@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{62472F2D-C4C5-4610-88AF-164A082673B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Giparus.VirtualAvl</RootNamespace>
-    <AssemblyName>Giparus.VirtualAvl</AssemblyName>
+    <RootNamespace>Giparus.TeltonikaDriver</RootNamespace>
+    <AssemblyName>Giparus.TeltonikaDriver</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,9 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AvlVirtualProgram.cs" />
+    <Compile Include="Crc16.cs" />
+    <Compile Include="DataTypes\AvlDataArray.cs" />
+    <Compile Include="DataTypes\AvlData.cs" />
+    <Compile Include="DataTypes\GpsPosition.cs" />
+    <Compile Include="IPacket.cs" />
+    <Compile Include="PacketParser.cs" />
+    <Compile Include="Tcp\AvlTcpPacket.cs" />
+    <Compile Include="DataTypes\AvlTimeStamp.cs" />
+    <Compile Include="GenericParser.cs" />
+    <Compile Include="DataTypes\GpsElement.cs" />
+    <Compile Include="ISelfParser.cs" />
+    <Compile Include="DataTypes\IoBlock.cs" />
+    <Compile Include="DataTypes\IoElement.cs" />
+    <Compile Include="DataTypes\IoPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VirtualAvl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
