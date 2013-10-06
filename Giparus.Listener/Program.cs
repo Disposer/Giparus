@@ -38,7 +38,7 @@ namespace Giparus.Listener
         {
             e.Accept(); //TODO:filtering here
 
-            Console.WriteLine("Imei: {0}, Status:{1}", e.Imei, e.CommunicationAccepted);
+            Console.WriteLine("Imei: {0}, Accepted: {1}", e.Imei, e.CommunicationAccepted);
         }
 
         static void listener_DataFetched(object sender, AvlTcpDataArgs e)
