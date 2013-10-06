@@ -43,7 +43,7 @@ namespace Giparus.TeltonikaDriver.Tcp
 
         public void CheckCrc()
         {
-            var origCrc = BitConverter.ToInt16(_crc.Reverse().ToArray(),0);
+            var origCrc = BitConverter.ToUInt16(_crc.Reverse().ToArray(),0);
             var res = Crc16.ComputeChecksum(_data);
 
             if (res != origCrc)

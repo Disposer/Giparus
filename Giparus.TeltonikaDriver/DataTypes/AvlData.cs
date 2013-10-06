@@ -19,6 +19,11 @@ namespace Giparus.TeltonikaDriver.DataTypes
             this.IoElement = GenericParser.Parse<IoElement>(reader);
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0}: {1}", this.TimeStamp, this.GpsElement);
+        }
+
         private AvlData() { }
     }
 }

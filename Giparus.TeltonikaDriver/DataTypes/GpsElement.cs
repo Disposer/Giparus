@@ -45,6 +45,11 @@ namespace Giparus.TeltonikaDriver.DataTypes
             this.Longitude = new GpsPosition(BitConverter.ToInt32(_longitude.Reverse().ToArray(), 0), CoordinationMode.Longitude);
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}", this.Latitude, this.Longitude);
+        }
+
         private GpsElement() { }
     }
 }
