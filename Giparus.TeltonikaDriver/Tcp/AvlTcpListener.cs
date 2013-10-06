@@ -17,6 +17,10 @@ namespace Giparus.TeltonikaDriver.Tcp
         private TcpListener _listener;
         private readonly object _locker = new object();
 
+        public event EventHandler<AvlTcpCommArgs> DeviceConnected;
+        public event EventHandler<AvlTcpStatusArgs> StatusChanged;
+        public event EventHandler<AvlTcpDataArgs> DataFetched;
+        public event EventHandler<AvlTcpErrorArgs> ErrorOccured;
 
         #region .ctor
         public AvlTcpListener(int port)
@@ -24,7 +28,6 @@ namespace Giparus.TeltonikaDriver.Tcp
             _port = port;
         }
         #endregion
-
 
         #region Listen & Handle
         public void Listen()
@@ -34,21 +37,12 @@ namespace Giparus.TeltonikaDriver.Tcp
 
         private void ListenToPort(object state)
         {
-            if (_started) { Console.WriteLine("'ListenToPort' went wrong: {0}", "Duplicate listener"); }
-            else _started = true;
+            if (_started) { throw new InvalidOperationException("duplicate listener"); }
+            _started = true;
 
-            try
-            {
-                _listener = new TcpListener(IPAddress.Any, _port);
-                _listener.Start();
-
-                Console.WriteLine("Listenning at: " + _listener.LocalEndpoint);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine("'_listener.Start()' went wrong: {0}", exception.Message);
-                throw;
-            }
+            _listener = new TcpListener(IPAddress.Any, _port);
+            _listener.Start();
+            this.OnStatusChanged(string.Empty, AvlTcpStatus.Started);
 
             var counter = 0;
             while (true) // For now, flag is always true
@@ -63,7 +57,7 @@ namespace Giparus.TeltonikaDriver.Tcp
 
                     TcpClient client;
                     lock (_locker) { client = _listener.AcceptTcpClient(); }
-                    Console.WriteLine(DateTime.Now + " @Client connected at {0}", client.Client.RemoteEndPoint);
+                    this.OnStatusChanged(null, AvlTcpStatus.Connected, string.Format("{0} @Client connected at {1}", DateTime.Now, client.Client.RemoteEndPoint));
 
                     //Create a thread to handle communication
                     var clientThread = new Thread(this.ClientHandler)
@@ -73,7 +67,7 @@ namespace Giparus.TeltonikaDriver.Tcp
                     };
                     clientThread.Start(client);
                 }
-                catch (Exception exception) { Console.WriteLine("'_listener.AcceptTcpClient()' went wrong" + exception.Message); }
+                catch (Exception exception) { this.OnErrorOccured(null, exception); }
             }
         }
 
@@ -85,9 +79,20 @@ namespace Giparus.TeltonikaDriver.Tcp
             var stream = tcpClient.GetStream();
 
             var imei = this.ReadImei(stream);
-            Console.WriteLine(imei);
 
-            this.Accept(stream);
+            var commArgs = this.OnDeviceCnnected(imei);
+            if (commArgs.CommunicationAccepted)
+            {
+                this.Accept(stream);
+                this.OnStatusChanged(imei, AvlTcpStatus.Accepted);
+            }
+            else
+            {
+                this.Reject(stream);
+                this.OnStatusChanged(imei, AvlTcpStatus.Rejected);
+            }
+            
+
             while (true)
             {
                 try
@@ -95,7 +100,7 @@ namespace Giparus.TeltonikaDriver.Tcp
                     var memoryStream = this.ReadData(stream);
                     if (memoryStream.Length == 0)
                     {
-                        Console.WriteLine("Comm. Terminated");
+                        this.OnStatusChanged(imei, AvlTcpStatus.Terminated);
                         break;
                     }
 
@@ -103,36 +108,69 @@ namespace Giparus.TeltonikaDriver.Tcp
                     if (memoryStream.Position != memoryStream.Length)
                         throw new InvalidDataException("unfinished avl packet");
 
-                    var avlData = packet.GetAvlDataArray().GetAvlData();
+                    var avlData = packet.GetAvlDataArray();
+                    this.OnDataFetched(imei, avlData);
 
-                    var avlDataArray = avlData as AvlData[] ?? avlData.ToArray();
-                    foreach (var data in avlDataArray)
-                        Console.WriteLine(data.ToString());
-
-                    this.ResponseReverse(avlDataArray.Count(), stream);
-
-                    Console.WriteLine("Response with Count:'{0}' sent", avlDataArray.Count());
-                    Console.WriteLine(new string('-', 79));
-                    //var file = new byte[length];
-                    //Array.Copy(buffer, file, length);
-                    //File.WriteAllBytes("c:\\" + new Random().Next() + ".avldata", file);
-
+                    this.ResponseReverse(avlData.NumberOfData1, stream);
                 }
                 catch (Exception exception)
                 {
                     //TODO: write (int)0 as response to resend the packet
 
                     //a socket error has occured
-                    Console.WriteLine("'stream.Read()' went wrong" + exception.Message);
+                    this.OnErrorOccured(imei, exception);
                 }
             }
-        }       
+        }
+
+        protected AvlTcpCommArgs OnDeviceCnnected(string imei)
+        {
+            var commArgs = new AvlTcpCommArgs(imei);
+            if (this.DeviceConnected != null)
+                this.DeviceConnected(this, commArgs);
+
+            return commArgs;
+        }
+
+        protected AvlTcpStatusArgs OnStatusChanged(string imei, AvlTcpStatus status, string extra = "")
+        {
+            var statusArgs = new AvlTcpStatusArgs(imei, status, extra);
+            if (this.StatusChanged != null)
+                this.StatusChanged(this, statusArgs);
+
+            return statusArgs;
+        }
+
+        protected AvlTcpDataArgs OnDataFetched(string imei, AvlDataArray data)
+        {
+            var dataArgs = new AvlTcpDataArgs(imei, data);
+            if (this.DataFetched != null)
+                this.DataFetched(this, dataArgs);
+
+            return dataArgs;
+        }
+
+        protected AvlTcpErrorArgs OnErrorOccured(string imei, Exception exception)
+        {
+            var errorArgs = new AvlTcpErrorArgs(imei, exception);
+            if (this.ErrorOccured != null)
+                this.ErrorOccured(this, errorArgs);
+
+            return errorArgs;
+        }
+
         #endregion
 
         private void Accept(NetworkStream stream)
         {
             // 1 as byte array response will determine if it would accept data from this module.
             this.Response(1, stream);
+        }
+
+        private void Reject(NetworkStream stream)
+        {
+            // 0 as byte array response will determine if it would reject data from this module.
+            this.Response(0, stream);
         }
 
         private void Response(int count, NetworkStream stream)
@@ -145,12 +183,6 @@ namespace Giparus.TeltonikaDriver.Tcp
         {
             var answer = BitConverter.GetBytes(count).Reverse().ToArray();
             stream.Write(answer, 0, answer.Length);
-        }
-
-        private void Reject(NetworkStream stream)
-        {
-            // 0 as byte array response will determine if it would reject data from this module.
-            this.Response(0, stream);
         }
 
         private string ReadImei(NetworkStream stream)
