@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Data;
+using System.Linq;
+using Giparus.Listener.Model;
+using Giparus.TeltonikaDriver.DataTypes;
 using Giparus.TeltonikaDriver.Tcp;
+using ServiceStack.OrmLite;
 
 namespace Giparus.Listener
 {
@@ -7,10 +12,21 @@ namespace Giparus.Listener
 
     public class Program
     {
+        private static IDbConnection _database;
+
         static void Main()
         {
-            Console.WriteLine("Listening...");
+            Console.WriteLine("Initializeing Database.");
+            const string conectionString = "Initial Catalog=ADB;Data Source=Hecarim\\MainServer;Integrated Security=true;";
+            var factory = new OrmLiteConnectionFactory(conectionString, SqlServerDialect.Provider);
+            _database = factory.OpenDbConnection();
 
+            Console.WriteLine("Creating Tables");
+            _database.CreateTable(false, typeof(AvlDataModel));
+
+            Console.WriteLine("Conection established");
+
+            Console.WriteLine("Listening...");
             var listener = new AvlTcpListener(2020);
 
             listener.DataFetched += listener_DataFetched;
@@ -20,13 +36,14 @@ namespace Giparus.Listener
 
             listener.Listen();
 
-            Console.WriteLine("Pree any key to exit");
+            Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
 
+
         static void listener_StatusChanged(object sender, AvlTcpStatusArgs e)
         {
-            Console.WriteLine("Imei: {0}, Status: {1}, Info: {2}",e.Imei,e.Status,e.Extra);
+            Console.WriteLine("Imei: {0}, Status: {1}, Info: {2}", e.Imei, e.Status, e.Extra);
         }
 
         static void listener_ErrorOccured(object sender, AvlTcpErrorArgs e)
@@ -44,8 +61,28 @@ namespace Giparus.Listener
         static void listener_DataFetched(object sender, AvlTcpDataArgs e)
         {
             Console.WriteLine("Fetched Data from '{0}' at '{1}':", e.Imei, e.FetchedTimeStamp);
-            foreach (var datum in e.Data.GetAvlData())
-                Console.WriteLine(datum);
+            foreach (var datium in e.Data.GetAvlData())
+            {
+                Console.WriteLine("Adding data to db: {0}", datium);
+
+                var avl = new AvlDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Iemi = e.Imei,
+                    Time = datium.TimeStamp.Time,
+                    Altitude = datium.GpsElement.Altitude,
+                    Angle = datium.GpsElement.Angle,
+                    Latitude = datium.GpsElement.Latitude,
+                    Longitude = datium.GpsElement.Longitude,
+                    SatelliteCount = datium.GpsElement.SatelliteCount,
+                    Speed = datium.GpsElement.Speed,
+                    Priority = (int)datium.Priority,
+                };
+
+                var items = _database.Where<AvlDataModel>(c => (c.Iemi == avl.Iemi) && (c.Time == avl.Time));
+                if (items.Any()) continue;
+                _database.Insert(avl);
+            }
         }
     }
 }

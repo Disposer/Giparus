@@ -30,8 +30,7 @@ namespace Giparus.VirtualAvl
 
             Console.Write("Enter ip: ");
             var ip = Console.ReadLine();
-            if (!string.IsNullOrEmpty(ip)) _server = IPAddress.Parse(ip);
-            else _server = IPAddress.Parse("127.0.0.1");
+            _server = IPAddress.Parse(!string.IsNullOrEmpty(ip) ? ip : "127.0.0.1");
         }
 
         private static void StartClient()

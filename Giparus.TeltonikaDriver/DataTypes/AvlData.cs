@@ -24,6 +24,6 @@ namespace Giparus.TeltonikaDriver.DataTypes
             return string.Format("{0}: {1}", this.TimeStamp, this.GpsElement);
         }
 
-        private AvlData() { }
+        public AvlData() { }
     }
 }

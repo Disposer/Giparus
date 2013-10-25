@@ -14,7 +14,7 @@ namespace Giparus.TeltonikaDriver.DataTypes
             _timeStamp = reader.ReadBytes(8);
         }
 
-        public DateTime Timestamp
+        public DateTime Time
         {
             get
             {
@@ -26,12 +26,12 @@ namespace Giparus.TeltonikaDriver.DataTypes
 
         public override string ToString()
         {
-            return this.Timestamp.ToString(CultureInfo.InvariantCulture);
+            return this.Time.ToString(CultureInfo.InvariantCulture);
         }
 
         public static implicit operator DateTime(AvlTimeStamp timestamp)
         {
-            return timestamp.Timestamp;
+            return timestamp.Time;
         }
 
         private AvlTimeStamp() { }

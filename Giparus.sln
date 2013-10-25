@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Listener", "Giparus.Listener\Giparus.Listener.csproj", "{E49CF328-9F72-49F8-9292-BB2EE25D61D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.VirtualAvl", "Giparus.VirtualAvl\Giparus.VirtualAvl.csproj", "{FCCC1EBE-E3B9-4B6E-B1E5-47B4F70185BC}"
@@ -13,6 +15,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleData", "SampleData", 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.TeltonikaDriver", "Giparus.TeltonikaDriver\Giparus.TeltonikaDriver.csproj", "{62472F2D-C4C5-4610-88AF-164A082673B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Osm.Test", "Giparus.Osm.Test\Giparus.Osm.Test.csproj", "{C9D1E646-FBFB-45F3-8FCD-5495D350EF22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Osm", "Giparus.Osm\Giparus.Osm.csproj", "{FF285EBC-48ED-4094-B30D-1DD2D9FBFB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giparus.Data", "Giparus.Data\Giparus.Data.csproj", "{34D1698F-9812-40D5-9BBD-E82DCE201EBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +40,18 @@ Global
 		{62472F2D-C4C5-4610-88AF-164A082673B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62472F2D-C4C5-4610-88AF-164A082673B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62472F2D-C4C5-4610-88AF-164A082673B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9D1E646-FBFB-45F3-8FCD-5495D350EF22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D1E646-FBFB-45F3-8FCD-5495D350EF22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D1E646-FBFB-45F3-8FCD-5495D350EF22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D1E646-FBFB-45F3-8FCD-5495D350EF22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF285EBC-48ED-4094-B30D-1DD2D9FBFB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF285EBC-48ED-4094-B30D-1DD2D9FBFB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF285EBC-48ED-4094-B30D-1DD2D9FBFB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF285EBC-48ED-4094-B30D-1DD2D9FBFB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D1698F-9812-40D5-9BBD-E82DCE201EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D1698F-9812-40D5-9BBD-E82DCE201EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D1698F-9812-40D5-9BBD-E82DCE201EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D1698F-9812-40D5-9BBD-E82DCE201EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
