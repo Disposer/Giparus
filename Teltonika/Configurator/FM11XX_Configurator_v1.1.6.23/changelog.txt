@@ -1,0 +1,432 @@
+﻿         ╔═════════════════════════════════╗
+ ════════╣   FM11XX Configurator 1.1.x.y   ╠══════════════════════════════════
+         ╚═════════════════════════════════╝
+------------------------------------------------------------------------------
+  1.1.6.22 -> 1.1.6.23 2012-11-02 Julius
+------------------------------------------------------------------------------
+  - Clearing buffer after .deveft;
+------------------------------------------------------------------------------
+  1.1.6.21 -> 1.1.6.22 2012-10-31 Julius
+------------------------------------------------------------------------------
+  - Fixed S:SMS_EventNumbers: parsing default value;
+  - Hidden validated parameters window;
+  - Added .deveft;
+------------------------------------------------------------------------------
+  1.1.6.20 -> 1.1.6.21 2012-10-29 Julius
+------------------------------------------------------------------------------
+  - Fix for Eco Driving Defaults;
+  - Fixed Unlock when connected to several devices;
+  - Fixed defaults:
+	DIN1/2/3 AvgConst 10 -> 2;
+	Movement Sensor AvgConst 10 -> 1;
+	Frame Border size 1000 -> 1;
+	Min Period Moving 600 -> 1200;
+  - Fixed null iButton list entry;
+------------------------------------------------------------------------------
+  1.1.6.19 -> 1.1.6.20 2012-10-29 Julius
+------------------------------------------------------------------------------
+  - Bugfix #5136 (reverted #5068 changes);
+  - Green Driving is now default;
+  - Hidden TCP Listener;
+  - Fixed P:SScenarios: parser to allow Eco Driving max values;
+------------------------------------------------------------------------------
+  1.1.6.18 -> 1.1.6.19 2012-10-24 Julius
+------------------------------------------------------------------------------
+  - Fixed Cross thread operation in _port_DeviceFound(false);
+  - Backup is now restored on ReadProfile Exception;
+------------------------------------------------------------------------------
+  1.1.6.17 -> 1.1.6.18 2012-10-22 Julius
+------------------------------------------------------------------------------
+  - Fixed SMS Event predefined numbers;
+  - Bugfix #5051 (SMS Events parameter validation hidden);
+  - Bugfix #5068 (changed Scenarios loading/saving for Green Driving);
+------------------------------------------------------------------------------
+  1.1.6.16 -> 1.1.6.17 2012-10-18 Julius
+------------------------------------------------------------------------------
+  - Fixed spelling mistakes;
+------------------------------------------------------------------------------
+  1.1.6.15 -> 1.1.6.16 2012-10-02 Julius
+------------------------------------------------------------------------------
+  - Bugfix #4877 (asking for sim pin after connect, if sim is not registered);
+  - Improved navigating to specific user control category (like in FM53XX);
+------------------------------------------------------------------------------
+  1.1.6.14 -> 1.1.6.15 2012-10-01 Julius
+------------------------------------------------------------------------------
+  - Added S:DismissTS parameter to System;
+------------------------------------------------------------------------------
+  1.1.6.13 -> 1.1.6.14 2012-09-28 Laurynas
+------------------------------------------------------------------------------
+  - Support for configuration reading over TCP.
+------------------------------------------------------------------------------
+  1.1.6.12 -> 1.1.6.13 2012-09-26 Julius
+------------------------------------------------------------------------------
+  - Changed Eco Driving parameters min/max/default values;
+  - Added Defaults handling for Green Driving;
+------------------------------------------------------------------------------
+  1.1.6.11 -> 1.1.6.12 2012-09-25 Julius
+------------------------------------------------------------------------------
+  - Bugfix #4914 (Ctrl+V now works in SMS Home Operator field);
+  - Fixed pasting into SMS Authorized and Event Numbers;
+  - Bugfix #4939 (instant validation of SMS phone numbers);
+  - Bugfix #4916 (Geofencing coordinates validation fixes);
+  - Bugfix #4919 (switched Longitude and Latitude in Geofencing);
+------------------------------------------------------------------------------
+  1.1.6.10 -> 1.1.6.11 2012-09-21 Julius
+------------------------------------------------------------------------------
+  - Changed last profile response packet to SMS_Event:39;
+  - Retry to read profile, if profile response packet count is unexpected;
+------------------------------------------------------------------------------
+  1.1.6.9 -> 1.1.6.10 2012-09-21 Julius
+------------------------------------------------------------------------------
+  - Fixed P:Version parsing;
+------------------------------------------------------------------------------
+  1.1.6.8 -> 1.1.6.9 2012-09-06 Julius
+------------------------------------------------------------------------------
+  - When reading corrupt SMS_Event entries, they will be replaced by defaults;
+  - Removed second S:get_param request from ReadProfile();
+------------------------------------------------------------------------------
+  1.1.6.7 -> 1.1.6.8 2012-08-28 Laurynas
+------------------------------------------------------------------------------
+  - Added support for recieving profiles over TCP from devices.
+  - Added emulator for emulating device sending profiles over TCP.
+  - MBP GPS – 20120808
+------------------------------------------------------------------------------
+  1.1.6.6 -> 1.1.6.7 2012-08-28 Laurynas
+------------------------------------------------------------------------------
+  - Bugfix #4736
+  - Disabled disconnect button while sending/receiving to/from device.
+  - Moved SerialPort.Close from GpsSerialPort.Close to a different thread 
+  because of dead-lock.
+  - Allowed for identical responses from device in ProfileParseInvoker.Fill.
+------------------------------------------------------------------------------
+  1.1.6.5 -> 1.1.6.6 2012-08-27 Julius
+------------------------------------------------------------------------------
+  - Removed ConfiguratorVersion from App.config;
+------------------------------------------------------------------------------
+  1.1.6.4 -> 1.1.6.5 2012-08-01 Julius
+------------------------------------------------------------------------------
+  - Fixed IO element size;
+------------------------------------------------------------------------------
+  1.1.6.3 -> 1.1.6.4 2012-07-30 Julius
+------------------------------------------------------------------------------
+  - Bugfix #4604 (reading configuration with phone numbers, containing '+');
+------------------------------------------------------------------------------
+  1.1.6.2 -> 1.1.6.3 2012-07-04 Julius
+------------------------------------------------------------------------------
+  - Fixed APN max length: 30 -> 32;
+  - Only ASCII characters allowed in APN, APN user name, APN password, Domain, 
+  SMS login, SMS pasword;
+  - Fixed Profile Read Error message box;
+------------------------------------------------------------------------------
+  1.1.6.1 -> 1.1.6.2 2012-06-26 Julius
+------------------------------------------------------------------------------
+  - Reintroduced scanning for all compatible devices;
+  - Better SMS Text handling (disallows pasting foreign symbols);
+  - Fixed changing of DefaultProfilePath while Saving/Loading Defaults;
+  - Added AboutBox;
+------------------------------------------------------------------------------
+  1.1.6.0 -> 1.1.6.1 2012-06-26 Julius
+------------------------------------------------------------------------------
+  - Fixed Default SleepTMO 60 -> 1;
+------------------------------------------------------------------------------
+  1.1.5.0 -> 1.1.6.0 2012-06-25 Julius
+------------------------------------------------------------------------------
+  - DEV-048;
+  - Max Angular Velocity units for Green Driving rad/s -> g;
+  - Maximum for Max Braking/Accelerating Force 0.84 -> 0.85;
+------------------------------------------------------------------------------
+  1.1.4.5 -> 1.1.5.0 2012-06-07 Julius
+------------------------------------------------------------------------------
+  - FM11 FIX-455;
+  - Fixed loading defaults in Scenarios;
+------------------------------------------------------------------------------
+  1.1.4.4 -> 1.1.4.5 2012-05-30 Julius
+------------------------------------------------------------------------------
+  - Fixed 15th IO Type name <http://192.168.3.6/mantisbt/view.php?id=4415>;
+  - Fixed Scenario SMS fields <http://192.168.3.6/mantisbt/view.php?id=4413>;
+  - Small UI fixes;
+------------------------------------------------------------------------------
+  1.1.4.3 -> 1.1.4.4 2012-05-24 Julius
+------------------------------------------------------------------------------
+  - Fixed smsEvenUserControl to udate when loading from flash
+  - Fixed hanging, when device is unplugged while connected
+  - Fixed non-supported SMS symbols <http://192.168.3.6/mantisbt/view.php?id=4360>
+------------------------------------------------------------------------------
+  1.1.4.2 -> 1.1.4.3 2012-05-02 Andrius
+------------------------------------------------------------------------------
+  - bug fix 4333
+  - po globalaus irasymo laukia patvirtinimo
+------------------------------------------------------------------------------
+  1.1.4.0 -> 1.1.4.1 2012-05-02 Andrius
+------------------------------------------------------------------------------
+  - ProfileParserSmsEvent (?<text>.{0,30})->(?<text>.{0,90})
+------------------------------------------------------------------------------
+  1.1.2.9 -> 1.1.4.0 2012-05-02 Andrius
+------------------------------------------------------------------------------
+  - DEV 012
+------------------------------------------------------------------------------
+  1.1.2.8 -> 1.1.2.9 2012-04-24 Andrius
+------------------------------------------------------------------------------
+  - Bug fix #4283
+------------------------------------------------------------------------------
+  1.1.2.7 -> 1.1.2.8 2012-04-24 Andrius
+------------------------------------------------------------------------------
+  - Bug fix #4271
+------------------------------------------------------------------------------
+  1.1.2.6 -> 1.1.2.7 2012-03-14 Andrius
+------------------------------------------------------------------------------
+  - Scenarios->maxAccForceNumericUpDown max 0.7->0.84
+  - Scenarios->maxBrakForceNumericUpDown max 0.7->0.84
+------------------------------------------------------------------------------
+  1.1.2.5 -> 1.1.2.6 2012-03-06 Rimas
+  - Fixed geozone loading bug <http://192.168.3.6/mantisbt/view.php?id=4156>
+------------------------------------------------------------------------------
+  1.1.2.4 -> 1.1.2.5 2012-03-05 Andrius
+------------------------------------------------------------------------------
+  - Settings->Sleep Mode-> remove Sleep
+------------------------------------------------------------------------------
+  1.1.2.3 -> 1.1.2.4 2012-03-05 Andrius
+------------------------------------------------------------------------------
+  - SMS->authorized phone numbers bug
+------------------------------------------------------------------------------
+  1.1.2.2 -> 1.1.2.3 2012-03-05 Andrius
+------------------------------------------------------------------------------
+  - ReadProfileTimeout 1000->2000
+  - DeviceFlashingTimeout 1000->3000
+------------------------------------------------------------------------------
+  1.1.2.1 -> 1.1.2.2 2012-03-01 Andrius
+------------------------------------------------------------------------------
+  - WaitConnectTimeout 650-> 1500;
+------------------------------------------------------------------------------
+  1.1.1.7 -> 1.1.2.1 2012-03-01 Andrius
+------------------------------------------------------------------------------
+  - kai paspaudi LOAD DEFAULTS -> Geofencing (1 Zona, Priority nustato High (1) by default). Turetu buti Low (0).
+------------------------------------------------------------------------------
+  1.1.1.6 -> 1.1.1.7 2012-03-01 Andrius
+------------------------------------------------------------------------------
+  - Bug fix #4144
+------------------------------------------------------------------------------
+  1.1.1.4 -> 1.1.1.5 2012-01-17 Andrius
+------------------------------------------------------------------------------
+  - System.Sleep Mode: add Deep Sleep
+------------------------------------------------------------------------------
+  1.1.1.3 -> 1.1.1.4 2011-11-30 Andrius
+------------------------------------------------------------------------------
+  - System.Deep Sleep Mode: (Disabled/Enabled)->(Off/On)
+  - SModes.Min Saved records changed default values
+  - Scenarios.Out1scenario defalut 1->0; MaxAllowedSpeed 90->0; Out2scenario 2->0
+  - ScenarioUserControl.maxAccForceNumericUpDown, maxBrakForceNumericUpDown max 0.85->0.7 
+  - Sms.Timeout default 60->0
+  - IO.GenerateEvent default 10->0
+------------------------------------------------------------------------------
+  1.1.0.2 -> 1.1.1.3 2011-11-23 Andrius
+------------------------------------------------------------------------------
+  - Bug fix #3756
+------------------------------------------------------------------------------
+  1.1.0.1 -> 1.1.1.2 2011-11-15 Andrius
+------------------------------------------------------------------------------
+  - Bug fix #3736
+------------------------------------------------------------------------------
+  1.1.0.17 -> 1.1.1.1 2011-11-11 Rimas
+------------------------------------------------------------------------------
+  - Bug fix #3693
+  - Added iButtonId list, phone number list, operator list copy/paste compatibility
+------------------------------------------------------------------------------
+  1.1.0.16 -> 1.1.0.17
+------------------------------------------------------------------------------
+  - Increased "Home Operator Code" length to 7 (same as Operator code length)
+------------------------------------------------------------------------------
+  1.0.5.14 -> 1.1.0.16
+------------------------------------------------------------------------------
+  - System parameter changes:
+	* Added new parameter "Static Navigation"
+	* Now there are 5 reserved parameters
+	* Added last parameter which is string of any type (max length 25). 
+		Its input field is created though hidden.
+------------------------------------------------------------------------------
+  1.0.5.13 -> 1.0.5.14
+------------------------------------------------------------------------------
+  - Increased operator code lengh from 5 to 7
+  - Changed GSM>GPRS "IP" field name to "Domain", removed IP check, extended
+	field to 50 symbol lenght
+  - Added "Code" to Unlock form
+------------------------------------------------------------------------------
+  1.0.5.12 -> 1.0.5.13
+------------------------------------------------------------------------------
+  - Changed packets send logic, each packet is splited to characters before 
+	sending
+------------------------------------------------------------------------------
+  1.0.5.11 -> 1.0.5.12
+------------------------------------------------------------------------------
+  - Changed Scenarios>Max Cornering Angle (int) -> Max Angular Velocity 
+    (float) [0.10-1.00], default value: 0.30
+  - Changed Scenarios>Max Acceleration/Braking Force unit labes [g]'s -> g 
+    with tooltip '9.806 m/s²'
+  - Removed IO generate event - 'On Level'
+------------------------------------------------------------------------------
+  1.0.5.10 -> 1.0.5.11
+------------------------------------------------------------------------------
+  * Changed Scenario>Greendriving value interval and default values:
+    - acceleration force [0.25-0.85] default: 0.25
+	- braking force [0.25-0.85] default: 0.35
+	- cornering [0-255] default: 23
+	- max speed [0-260] default: 90
+  - Fixed unlock
+  - Fixed APN, username, password parsing.
+------------------------------------------------------------------------------
+  1.0.5.8 -> 1.0.5.10
+------------------------------------------------------------------------------
+  - Changed APN user name and password lenght from 6 to 30
+  - Added Teltonika logo
+------------------------------------------------------------------------------
+  1.0.5.7 -> 1.0.5.8
+------------------------------------------------------------------------------
+  - Fixed bug when entering valid unlock code invalid notification where shown
+------------------------------------------------------------------------------
+  1.0.5.5 -> 1.0.5.6
+------------------------------------------------------------------------------
+  - Fixed System>PowerMode parameter load.
+  - Removed profile number in notifications.
+  - Fixed navigation to System page at configurator start
+------------------------------------------------------------------------------
+  1.0.5.5 -> 1.0.5.6
+------------------------------------------------------------------------------
+  - Added security chech after device reset
+-----------------------------------------------------------------------------
+  1.0.5.4 -> 1.0.5.5
+------------------------------------------------------------------------------
+  - Fixed numericUpDown validation, allowed complete erasure of values
+ -----------------------------------------------------------------------------
+  1.0.5.3 -> 1.0.5.4
+------------------------------------------------------------------------------
+  - Changed load from flash shortcut from f9 to f1
+  - Changed save to flash shortcut from f5 to ctrl+f1
+  - Added more detailed instruction what to do when device is not found
+------------------------------------------------------------------------------
+  1.0.5.2 -> 1.0.5.3
+------------------------------------------------------------------------------
+  - Added notification message "Device not found"
+  - Removed SMS data sending settings control lock when settings are disabled
+  - Changed default data acquisition modes gps week time values
+  - Added SMS data sending notification when enabled 1st number - Server Number
+------------------------------------------------------------------------------
+  1.0.5.1 -> 1.0.5.2
+------------------------------------------------------------------------------
+  - Added new I/O element: Dallas Temperature
+------------------------------------------------------------------------------
+  1.0.5.0 -> 1.0.5.1
+------------------------------------------------------------------------------
+  - Changed iButton ID sending and receiving mechanism, now configurator 
+    performs iButton ID reverse before sending and after receiving iButton ID.
+  - Added informative iButton image. 
+------------------------------------------------------------------------------
+  1.0.4.0 -> 1.0.5.0
+------------------------------------------------------------------------------
+  - Fixed bug then items in edit mode in operatorgrid and ibuttongrid wasnt
+    sending to FM.
+  - Changed Records timeout type from byte to UInt32
+  - Changed Data acquisition modes min saved records min value from 0 to 1
+  - Changed IO averaging constant type from Int32 to UInt32
+  - Improved numericUpDown fields validation, now you can't enter empty value,
+    added minimum-maximum value validation on value changed
+  - Added notification that configurator can't get IMEI from FM when trying to 
+    establish connection.
+  - Fixed bug when connect buttun disables after login timeout, added
+    notification.
+------------------------------------------------------------------------------
+  1.0.3.0 -> 1.0.4.0
+------------------------------------------------------------------------------
+  - Added additional Trip parameter (not used on this version)
+
+------------------------------------------------------------------------------
+  1.0.3.0 -> 1.0.3.1
+------------------------------------------------------------------------------
+  - Added I/O parameters (refer fm11.events.ID.rev.05)
+
+------------------------------------------------------------------------------
+  1.0.2.14 -> 1.0.3.0
+------------------------------------------------------------------------------
+  - Added/Changed I/O parameters (refer fm11.events.ID.rev.04)
+  - Changed 'SMS Week Time' to 'GPRS Week Time'
+  - Improved Connect method
+
+------------------------------------------------------------------------------
+  1.0.2.13 -> 1.0.2.14
+------------------------------------------------------------------------------
+  - Fixed Geofence->iButtons link
+
+------------------------------------------------------------------------------
+  1.0.2.12 -> 1.0.2.13
+------------------------------------------------------------------------------
+  - Added measurement units to I/O properties
+
+------------------------------------------------------------------------------
+  1.0.2.11 -> 1.0.2.12
+------------------------------------------------------------------------------
+  - Added new sim status 'NO SIM'
+  - Fixed Scenarios, 2nd label changed to No.2 
+
+------------------------------------------------------------------------------
+  1.0.2.9 -> 1.0.2.11
+------------------------------------------------------------------------------
+  - Fixed Features>Scenario>iButton button.
+  - Fixed Features>Trip>IOElements button.
+  - Added tooltip for Data Aquisition modes min records saved.
+  - Fixed application crash after unplugging device when connection is open.
+  - Removed empty *Note lables from Feaetures>Scenarios.
+  - Added accelerator keys for connect and disconnect buttons.
+
+------------------------------------------------------------------------------
+  1.0.2.8 -> 1.0.2.9
+------------------------------------------------------------------------------
+  - Added possibility to edit IO elements in app.config
+
+------------------------------------------------------------------------------
+  1.0.2.7 -> 1.0.2.8
+------------------------------------------------------------------------------
+  - Fixed "Sim card registering" status text disappears after entering 
+    "entering pin" status.
+  - Fixed Scenarios->iButton and Trip>IOElements buttons, no they are disabled
+    while whole feature is disabled.
+  - Add new IO Data Mode (17) parameter, size(1B).
+
+------------------------------------------------------------------------------
+  1.0.2.6 -> 1.0.2.7
+------------------------------------------------------------------------------
+  - Fixed connect button, witch was falling inactive after fail to login.
+  - Added possibility to change configurator version in app.config
+
+------------------------------------------------------------------------------
+  1.0.2.5 -> 1.0.2.6
+------------------------------------------------------------------------------
+  - Fixed connect button, witch was falling inactive after device not found.
+
+------------------------------------------------------------------------------
+  1.0.2.4 -> 1.0.2.5
+------------------------------------------------------------------------------
+  - Version check added.
+  - Minor interface changes has been made.
+
+------------------------------------------------------------------------------
+  1.0.2.1 -> 1.0.2.4
+------------------------------------------------------------------------------
+  - Security feature have been added.
+    * On connect requires login if device is secured.
+    * On connect requires unlock code if device is locked.
+  - SimPin feature have been added.
+    * SimPin status updates automatically
+  - Automatic search for device on connect
+    * Connecting to device do not require manual port selection
+    * If more than 1 device is connected, selection window appears
+
+------------------------------------------------------------------------------
+  1.0.2.0 -> 1.0.2.1
+------------------------------------------------------------------------------
+  - Fixed IO available bytes size, now there are 84 bytes available when all 
+    IO are disabled.
+  - iButtons number reduced from 64 to 50, now it is saving to flash properly.
+  - GSM->SMS WeekTime title changed to SMS Data sending Settings.
+  - Trip->Continuous distance counting option now disables when Trip Feature 
+    is disabled.
+
+------------------------------------------------------------------------------

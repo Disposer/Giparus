@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Profile" targetNamespace="http://teltonika.com/GpsConfigurator/Profile" xmlns:mstns="http://teltonika.com/GpsConfigurator/Profile" xmlns="http://teltonika.com/GpsConfigurator/Profile" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Profile" msdata:IsDataSet="true" msdata:Locale="" msprop:Generator_DataSetName="Profile" msprop:Generator_UserDSName="Profile">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Profile" msprop:Generator_UserTableName="Profile" msprop:Generator_RowEvArgName="ProfileRowChangeEvent" msprop:Generator_TableVarName="tableProfile" msprop:Generator_TablePropName="_Profile" msprop:Generator_RowDeletingName="ProfileRowDeleting" msprop:Generator_RowChangingName="ProfileRowChanging" msprop:Generator_RowDeletedName="ProfileRowDeleted" msprop:Generator_RowEvHandlerName="ProfileRowChangeEventHandler" msprop:Generator_RowChangedName="ProfileRowChanged" msprop:Generator_TableClassName="ProfileDataTable" msprop:Generator_RowClassName="ProfileRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="Version" msprop:Generator_ColumnVarNameInTable="columnVersion" msprop:Generator_ColumnPropNameInRow="Version" msprop:Generator_ColumnPropNameInTable="VersionColumn" msprop:Generator_UserColumnName="Version" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="System" msprop:Generator_UserTableName="System" msprop:Generator_RowEvArgName="SystemRowChangeEvent" msprop:Generator_TableVarName="tableSystem" msprop:Generator_TablePropName="System" msprop:Generator_RowDeletingName="SystemRowDeleting" msprop:Generator_RowChangingName="SystemRowChanging" msprop:Generator_RowDeletedName="SystemRowDeleted" msprop:Generator_RowEvHandlerName="SystemRowChangeEventHandler" msprop:Generator_RowChangedName="SystemRowChanged" msprop:Generator_TableClassName="SystemDataTable" msprop:Generator_RowClassName="SystemRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="DeepSleepEnable" msprop:Generator_ColumnVarNameInTable="columnDeepSleepEnable" msprop:Generator_ColumnPropNameInRow="DeepSleepEnable" msprop:Generator_ColumnPropNameInTable="DeepSleepEnableColumn" msprop:Generator_UserColumnName="DeepSleepEnable" type="xs:unsignedByte" default="0" minOccurs="0" />
+              <xs:element name="PowerMode" msprop:Generator_ColumnVarNameInTable="columnPowerMode" msprop:Generator_ColumnPropNameInRow="PowerMode" msprop:Generator_ColumnPropNameInTable="PowerModeColumn" msprop:Generator_UserColumnName="PowerMode" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="MovDetectMode" msprop:Generator_ColumnVarNameInTable="columnMovDetectMode" msprop:Generator_ColumnPropNameInRow="MovDetectMode" msprop:Generator_ColumnPropNameInTable="MovDetectModeColumn" msprop:Generator_UserColumnName="MovDetectMode" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="StaticNavigation" msprop:Generator_ColumnVarNameInTable="columnStaticNavigation" msprop:Generator_ColumnPropNameInRow="StaticNavigation" msprop:Generator_ColumnPropNameInTable="StaticNavigationColumn" msprop:Generator_UserColumnName="StaticNavigation" type="xs:unsignedByte" default="1" minOccurs="0" />
+              <xs:element name="Reserved1" msprop:Generator_ColumnVarNameInTable="columnReserved1" msprop:Generator_ColumnPropNameInRow="Reserved1" msprop:Generator_ColumnPropNameInTable="Reserved1Column" msprop:Generator_UserColumnName="Reserved1" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="Reserved2" msprop:Generator_ColumnVarNameInTable="columnReserved2" msprop:Generator_ColumnPropNameInRow="Reserved2" msprop:Generator_ColumnPropNameInTable="Reserved2Column" msprop:Generator_UserColumnName="Reserved2" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="Reserved3" msprop:Generator_ColumnVarNameInTable="columnReserved3" msprop:Generator_ColumnPropNameInRow="Reserved3" msprop:Generator_ColumnPropNameInTable="Reserved3Column" msprop:Generator_UserColumnName="Reserved3" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="Reserved4" msprop:Generator_ColumnVarNameInTable="columnReserved4" msprop:Generator_ColumnPropNameInRow="Reserved4" msprop:Generator_ColumnPropNameInTable="Reserved4Column" msprop:Generator_UserColumnName="Reserved4" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="Reserved5" msprop:Generator_ColumnVarNameInTable="columnReserved5" msprop:Generator_ColumnPropNameInRow="Reserved5" msprop:Generator_ColumnPropNameInTable="Reserved5Column" msprop:Generator_UserColumnName="Reserved5" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="String25" msprop:Generator_ColumnVarNameInTable="columnString25" msprop:Generator_ColumnPropNameInRow="String25" msprop:Generator_ColumnPropNameInTable="String25Column" msprop:Generator_UserColumnName="String25" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Geofencing" msprop:Generator_UserTableName="Geofencing" msprop:Generator_RowEvArgName="GeofencingRowChangeEvent" msprop:Generator_TableVarName="tableGeofencing" msprop:Generator_TablePropName="Geofencing" msprop:Generator_RowDeletingName="GeofencingRowDeleting" msprop:Generator_RowChangingName="GeofencingRowChanging" msprop:Generator_RowDeletedName="GeofencingRowDeleted" msprop:Generator_RowEvHandlerName="GeofencingRowChangeEventHandler" msprop:Generator_RowChangedName="GeofencingRowChanged" msprop:Generator_TableClassName="GeofencingDataTable" msprop:Generator_RowClassName="GeofencingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="FrameBorderSize" msprop:Generator_ColumnVarNameInTable="columnFrameBorderSize" msprop:Generator_ColumnPropNameInRow="FrameBorderSize" msprop:Generator_ColumnPropNameInTable="FrameBorderSizeColumn" msprop:Generator_UserColumnName="FrameBorderSize" type="xs:unsignedInt" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Frame" msprop:Generator_UserTableName="Frame" msprop:Generator_RowEvArgName="FrameRowChangeEvent" msprop:Generator_TableVarName="tableFrame" msprop:Generator_TablePropName="Frame" msprop:Generator_RowDeletingName="FrameRowDeleting" msprop:Generator_RowChangingName="FrameRowChanging" msprop:Generator_RowDeletedName="FrameRowDeleted" msprop:Generator_RowEvHandlerName="FrameRowChangeEventHandler" msprop:Generator_RowChangedName="FrameRowChanged" msprop:Generator_TableClassName="FrameDataTable" msprop:Generator_RowClassName="FrameRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FrameId" msprop:Generator_ColumnVarNameInTable="columnFrameId" msprop:Generator_ColumnPropNameInRow="FrameId" msprop:Generator_ColumnPropNameInTable="FrameIdColumn" msprop:Generator_UserColumnName="FrameId" type="xs:unsignedShort" />
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="ShapeType" msprop:Generator_ColumnVarNameInTable="columnShapeType" msprop:Generator_ColumnPropNameInRow="ShapeType" msprop:Generator_ColumnPropNameInTable="ShapeTypeColumn" msprop:Generator_UserColumnName="ShapeType" type="xs:unsignedByte" />
+              <xs:element name="Priority" msprop:Generator_ColumnVarNameInTable="columnPriority" msprop:Generator_ColumnPropNameInRow="Priority" msprop:Generator_ColumnPropNameInTable="PriorityColumn" msprop:Generator_UserColumnName="Priority" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Event" msprop:Generator_ColumnVarNameInTable="columnEvent" msprop:Generator_ColumnPropNameInRow="Event" msprop:Generator_ColumnPropNameInTable="EventColumn" msprop:Generator_UserColumnName="Event" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="X1" msprop:Generator_ColumnVarNameInTable="columnX1" msprop:Generator_ColumnPropNameInRow="X1" msprop:Generator_ColumnPropNameInTable="X1Column" msprop:Generator_UserColumnName="X1" type="xs:double" minOccurs="0" />
+              <xs:element name="Y1" msprop:Generator_ColumnVarNameInTable="columnY1" msprop:Generator_ColumnPropNameInRow="Y1" msprop:Generator_ColumnPropNameInTable="Y1Column" msprop:Generator_UserColumnName="Y1" type="xs:double" minOccurs="0" />
+              <xs:element name="X2" msprop:Generator_ColumnVarNameInTable="columnX2" msprop:Generator_ColumnPropNameInRow="X2" msprop:Generator_ColumnPropNameInTable="X2Column" msprop:Generator_UserColumnName="X2" type="xs:double" minOccurs="0" />
+              <xs:element name="Y2" msprop:Generator_ColumnVarNameInTable="columnY2" msprop:Generator_ColumnPropNameInRow="Y2" msprop:Generator_ColumnPropNameInTable="Y2Column" msprop:Generator_UserColumnName="Y2" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GPRS" msprop:Generator_UserTableName="GPRS" msprop:Generator_RowEvArgName="GPRSRowChangeEvent" msprop:Generator_TableVarName="tableGPRS" msprop:Generator_TablePropName="GPRS" msprop:Generator_RowDeletingName="GPRSRowDeleting" msprop:Generator_RowChangingName="GPRSRowChanging" msprop:Generator_RowDeletedName="GPRSRowDeleted" msprop:Generator_RowEvHandlerName="GPRSRowChangeEventHandler" msprop:Generator_RowChangedName="GPRSRowChanged" msprop:Generator_TableClassName="GPRSDataTable" msprop:Generator_RowClassName="GPRSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="Enable" msprop:Generator_ColumnVarNameInTable="columnEnable" msprop:Generator_ColumnPropNameInRow="Enable" msprop:Generator_ColumnPropNameInTable="EnableColumn" msprop:Generator_UserColumnName="Enable" type="xs:unsignedByte" default="0" />
+              <xs:element name="DialNumber" msprop:Generator_ColumnVarNameInTable="columnDialNumber" msprop:Generator_ColumnPropNameInRow="DialNumber" msprop:Generator_ColumnPropNameInTable="DialNumberColumn" msprop:Generator_UserColumnName="DialNumber" type="xs:unsignedByte" default="0" minOccurs="0" />
+              <xs:element name="Apn" msprop:Generator_ColumnVarNameInTable="columnApn" msprop:Generator_ColumnPropNameInRow="Apn" msprop:Generator_ColumnPropNameInTable="ApnColumn" msprop:Generator_UserColumnName="Apn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Password" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_UserColumnName="Password" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TargetServerIp" msprop:Generator_ColumnVarNameInTable="columnTargetServerIp" msprop:Generator_ColumnPropNameInRow="TargetServerIp" msprop:Generator_ColumnPropNameInTable="TargetServerIpColumn" msprop:Generator_UserColumnName="TargetServerIp" type="xs:string" minOccurs="0" />
+              <xs:element name="TargetServerPort" msprop:Generator_ColumnVarNameInTable="columnTargetServerPort" msprop:Generator_ColumnPropNameInRow="TargetServerPort" msprop:Generator_ColumnPropNameInTable="TargetServerPortColumn" msprop:Generator_UserColumnName="TargetServerPort" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="Protocol" msprop:Generator_ColumnVarNameInTable="columnProtocol" msprop:Generator_ColumnPropNameInRow="Protocol" msprop:Generator_ColumnPropNameInTable="ProtocolColumn" msprop:Generator_UserColumnName="Protocol" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Reserved1" msprop:Generator_ColumnVarNameInTable="columnReserved1" msprop:Generator_ColumnPropNameInRow="Reserved1" msprop:Generator_ColumnPropNameInTable="Reserved1Column" msprop:Generator_UserColumnName="Reserved1" type="xs:string" minOccurs="0" />
+              <xs:element name="Reserved2" msprop:Generator_ColumnVarNameInTable="columnReserved2" msprop:Generator_ColumnPropNameInRow="Reserved2" msprop:Generator_ColumnPropNameInTable="Reserved2Column" msprop:Generator_UserColumnName="Reserved2" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sms" msprop:Generator_UserTableName="Sms" msprop:Generator_RowEvArgName="SmsRowChangeEvent" msprop:Generator_TableVarName="tableSms" msprop:Generator_TablePropName="Sms" msprop:Generator_RowDeletingName="SmsRowDeleting" msprop:Generator_RowChangingName="SmsRowChanging" msprop:Generator_RowDeletedName="SmsRowDeleted" msprop:Generator_RowEvHandlerName="SmsRowChangeEventHandler" msprop:Generator_RowChangedName="SmsRowChanged" msprop:Generator_TableClassName="SmsDataTable" msprop:Generator_RowClassName="SmsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="SmsEnable" msprop:Generator_ColumnVarNameInTable="columnSmsEnable" msprop:Generator_ColumnPropNameInRow="SmsEnable" msprop:Generator_ColumnPropNameInTable="SmsEnableColumn" msprop:Generator_UserColumnName="SmsEnable" type="xs:unsignedByte" default="0" />
+              <xs:element name="Timeout" msprop:Generator_ColumnVarNameInTable="columnTimeout" msprop:Generator_ColumnPropNameInRow="Timeout" msprop:Generator_ColumnPropNameInTable="TimeoutColumn" msprop:Generator_UserColumnName="Timeout" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="SmsLogin" msprop:Generator_ColumnVarNameInTable="columnSmsLogin" msprop:Generator_ColumnPropNameInRow="SmsLogin" msprop:Generator_ColumnPropNameInTable="SmsLoginColumn" msprop:Generator_UserColumnName="SmsLogin">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SmsPassword" msprop:Generator_ColumnVarNameInTable="columnSmsPassword" msprop:Generator_ColumnPropNameInRow="SmsPassword" msprop:Generator_ColumnPropNameInTable="SmsPasswordColumn" msprop:Generator_UserColumnName="SmsPassword">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IO" msprop:Generator_UserTableName="IO" msprop:Generator_RowEvArgName="IORowChangeEvent" msprop:Generator_TableVarName="tableIO" msprop:Generator_TablePropName="IO" msprop:Generator_RowDeletingName="IORowDeleting" msprop:Generator_RowChangingName="IORowChanging" msprop:Generator_RowDeletedName="IORowDeleted" msprop:Generator_RowEvHandlerName="IORowChangeEventHandler" msprop:Generator_RowChangedName="IORowChanged" msprop:Generator_TableClassName="IODataTable" msprop:Generator_RowClassName="IORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IOId" msprop:Generator_ColumnVarNameInTable="columnIOId" msprop:Generator_ColumnPropNameInRow="IOId" msprop:Generator_ColumnPropNameInTable="IOIdColumn" msprop:Generator_UserColumnName="IOId" type="xs:short" />
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="Enable" msprop:Generator_ColumnVarNameInTable="columnEnable" msprop:Generator_ColumnPropNameInRow="Enable" msprop:Generator_ColumnPropNameInTable="EnableColumn" msprop:Generator_UserColumnName="Enable" type="xs:unsignedByte" default="0" />
+              <xs:element name="Priority" msprop:Generator_ColumnVarNameInTable="columnPriority" msprop:Generator_ColumnPropNameInRow="Priority" msprop:Generator_ColumnPropNameInTable="PriorityColumn" msprop:Generator_UserColumnName="Priority" type="xs:unsignedByte" />
+              <xs:element name="HighLevel" msprop:Generator_ColumnVarNameInTable="columnHighLevel" msprop:Generator_ColumnPropNameInRow="HighLevel" msprop:Generator_ColumnPropNameInTable="HighLevelColumn" msprop:Generator_UserColumnName="HighLevel" type="xs:int" default="0" />
+              <xs:element name="LowLevel" msprop:Generator_ColumnVarNameInTable="columnLowLevel" msprop:Generator_ColumnPropNameInRow="LowLevel" msprop:Generator_ColumnPropNameInTable="LowLevelColumn" msprop:Generator_UserColumnName="LowLevel" type="xs:int" default="0" />
+              <xs:element name="GenerateEvent" msprop:Generator_ColumnVarNameInTable="columnGenerateEvent" msprop:Generator_ColumnPropNameInRow="GenerateEvent" msprop:Generator_ColumnPropNameInTable="GenerateEventColumn" msprop:Generator_UserColumnName="GenerateEvent" type="xs:unsignedByte" />
+              <xs:element name="AvgCounter" msprop:Generator_ColumnVarNameInTable="columnAvgCounter" msprop:Generator_ColumnPropNameInRow="AvgCounter" msprop:Generator_ColumnPropNameInTable="AvgCounterColumn" msprop:Generator_UserColumnName="AvgCounter" type="xs:unsignedInt" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Record" msprop:Generator_TableClassName="RecordDataTable" msprop:Generator_TableVarName="tableRecord" msprop:Generator_TablePropName="Record" msprop:Generator_RowDeletingName="RecordRowDeleting" msprop:Generator_UserTableName="Record" msprop:Generator_RowChangingName="RecordRowChanging" msprop:Generator_RowEvHandlerName="RecordRowChangeEventHandler" msprop:Generator_RowDeletedName="RecordRowDeleted" msprop:Generator_RowEvArgName="RecordRowChangeEvent" msprop:Generator_RowChangedName="RecordRowChanged" msprop:Generator_RowClassName="RecordRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="SortMode" msprop:Generator_ColumnVarNameInTable="columnSortMode" msprop:Generator_ColumnPropNameInRow="SortMode" msprop:Generator_ColumnPropNameInTable="SortModeColumn" msprop:Generator_UserColumnName="SortMode" type="xs:unsignedByte" default="0" minOccurs="0" />
+              <xs:element name="RefreshTimeout" msprop:Generator_ColumnVarNameInTable="columnRefreshTimeout" msprop:Generator_ColumnPropNameInRow="RefreshTimeout" msprop:Generator_ColumnPropNameInTable="RefreshTimeoutColumn" msprop:Generator_UserColumnName="RefreshTimeout" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="ServerResponseTmo" msprop:Generator_ColumnVarNameInTable="columnServerResponseTmo" msprop:Generator_ColumnPropNameInRow="ServerResponseTmo" msprop:Generator_ColumnPropNameInTable="ServerResponseTmoColumn" msprop:Generator_UserColumnName="ServerResponseTmo" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="MaxPacketSize" msprop:Generator_ColumnVarNameInTable="columnMaxPacketSize" msprop:Generator_ColumnPropNameInRow="MaxPacketSize" msprop:Generator_ColumnPropNameInTable="MaxPacketSizeColumn" msprop:Generator_UserColumnName="MaxPacketSize" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="Reserved3" msprop:Generator_ColumnVarNameInTable="columnReserved3" msprop:Generator_ColumnPropNameInRow="Reserved3" msprop:Generator_ColumnPropNameInTable="Reserved3Column" msprop:Generator_UserColumnName="Reserved3" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="Reserved4" msprop:Generator_ColumnVarNameInTable="columnReserved4" msprop:Generator_ColumnPropNameInRow="Reserved4" msprop:Generator_ColumnPropNameInTable="Reserved4Column" msprop:Generator_UserColumnName="Reserved4" type="xs:unsignedInt" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Scenarios" msprop:Generator_TableClassName="ScenariosDataTable" msprop:Generator_TableVarName="tableScenarios" msprop:Generator_TablePropName="Scenarios" msprop:Generator_RowDeletingName="ScenariosRowDeleting" msprop:Generator_UserTableName="Scenarios" msprop:Generator_RowChangingName="ScenariosRowChanging" msprop:Generator_RowEvHandlerName="ScenariosRowChangeEventHandler" msprop:Generator_RowDeletedName="ScenariosRowDeleted" msprop:Generator_RowEvArgName="ScenariosRowChangeEvent" msprop:Generator_RowChangedName="ScenariosRowChanged" msprop:Generator_RowClassName="ScenariosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="Out1scenario" msprop:Generator_ColumnVarNameInTable="columnOut1scenario" msprop:Generator_ColumnPropNameInRow="Out1scenario" msprop:Generator_ColumnPropNameInTable="Out1scenarioColumn" msprop:Generator_UserColumnName="Out1scenario" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="MaxAccelerationForce" msprop:Generator_ColumnVarNameInTable="columnMaxAccelerationForce" msprop:Generator_ColumnPropNameInRow="MaxAccelerationForce" msprop:Generator_ColumnPropNameInTable="MaxAccelerationForceColumn" msprop:Generator_UserColumnName="MaxAccelerationForce" type="xs:double" minOccurs="0" />
+              <xs:element name="MaxBrakingForce" msprop:Generator_ColumnVarNameInTable="columnMaxBrakingForce" msprop:Generator_ColumnPropNameInRow="MaxBrakingForce" msprop:Generator_ColumnPropNameInTable="MaxBrakingForceColumn" msprop:Generator_UserColumnName="MaxBrakingForce" type="xs:double" minOccurs="0" />
+              <xs:element name="MaxCorneringAngle" msprop:Generator_ColumnVarNameInTable="columnMaxCorneringAngle" msprop:Generator_ColumnPropNameInRow="MaxCorneringAngle" msprop:Generator_ColumnPropNameInTable="MaxCorneringAngleColumn" msprop:Generator_UserColumnName="MaxCorneringAngle" type="xs:double" minOccurs="0" />
+              <xs:element name="MaxAllowedSpeed" msprop:Generator_ColumnVarNameInTable="columnMaxAllowedSpeed" msprop:Generator_ColumnPropNameInRow="MaxAllowedSpeed" msprop:Generator_ColumnPropNameInTable="MaxAllowedSpeedColumn" msprop:Generator_UserColumnName="MaxAllowedSpeed" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="Out2scenario" msprop:Generator_ColumnVarNameInTable="columnOut2scenario" msprop:Generator_ColumnPropNameInRow="Out2scenario" msprop:Generator_ColumnPropNameInTable="Out2scenarioColumn" msprop:Generator_UserColumnName="Out2scenario" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Reserved1" msprop:Generator_ColumnVarNameInTable="columnReserved1" msprop:Generator_ColumnPropNameInRow="Reserved1" msprop:Generator_ColumnPropNameInTable="Reserved1Column" msprop:Generator_UserColumnName="Reserved1" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Reserved2" msprop:Generator_ColumnVarNameInTable="columnReserved2" msprop:Generator_ColumnPropNameInRow="Reserved2" msprop:Generator_ColumnPropNameInTable="Reserved2Column" msprop:Generator_UserColumnName="Reserved2" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Trip" msprop:Generator_TableClassName="TripDataTable" msprop:Generator_TableVarName="tableTrip" msprop:Generator_TablePropName="Trip" msprop:Generator_RowDeletingName="TripRowDeleting" msprop:Generator_UserTableName="Trip" msprop:Generator_RowChangingName="TripRowChanging" msprop:Generator_RowEvHandlerName="TripRowChangeEventHandler" msprop:Generator_RowDeletedName="TripRowDeleted" msprop:Generator_RowEvArgName="TripRowChangeEvent" msprop:Generator_RowChangedName="TripRowChanged" msprop:Generator_RowClassName="TripRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="Enable" msprop:Generator_ColumnVarNameInTable="columnEnable" msprop:Generator_ColumnPropNameInRow="Enable" msprop:Generator_ColumnPropNameInTable="EnableColumn" msprop:Generator_UserColumnName="Enable" type="xs:unsignedByte" default="0" minOccurs="0" />
+              <xs:element name="StartStopSpeed" msprop:Generator_ColumnVarNameInTable="columnStartStopSpeed" msprop:Generator_ColumnPropNameInRow="StartStopSpeed" msprop:Generator_ColumnPropNameInTable="StartStopSpeedColumn" msprop:Generator_UserColumnName="StartStopSpeed" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Timeout" msprop:Generator_ColumnVarNameInTable="columnTimeout" msprop:Generator_ColumnPropNameInRow="Timeout" msprop:Generator_ColumnPropNameInTable="TimeoutColumn" msprop:Generator_UserColumnName="Timeout" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="ContinuousCounting" msprop:Generator_ColumnVarNameInTable="columnContinuousCounting" msprop:Generator_ColumnPropNameInRow="ContinuousCounting" msprop:Generator_ColumnPropNameInTable="ContinuousCountingColumn" msprop:Generator_UserColumnName="ContinuousCounting" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Reserved1" msprop:Generator_ColumnVarNameInTable="columnReserved1" msprop:Generator_ColumnPropNameInRow="Reserved1" msprop:Generator_ColumnPropNameInTable="Reserved1Column" msprop:Generator_UserColumnName="Reserved1" type="xs:unsignedInt" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IButtonList" msprop:Generator_TableClassName="IButtonListDataTable" msprop:Generator_TableVarName="tableIButtonList" msprop:Generator_TablePropName="IButtonList" msprop:Generator_RowDeletingName="IButtonListRowDeleting" msprop:Generator_UserTableName="IButtonList" msprop:Generator_RowChangingName="IButtonListRowChanging" msprop:Generator_RowEvHandlerName="IButtonListRowChangeEventHandler" msprop:Generator_RowDeletedName="IButtonListRowDeleted" msprop:Generator_RowEvArgName="IButtonListRowChangeEvent" msprop:Generator_RowChangedName="IButtonListRowChanged" msprop:Generator_RowClassName="IButtonListRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="IButtonListId" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnIButtonListId" msprop:Generator_ColumnPropNameInRow="IButtonListId" msprop:Generator_ColumnPropNameInTable="IButtonListIdColumn" msprop:Generator_UserColumnName="IButtonListId" type="xs:int" />
+              <xs:element name="IButtonId" msprop:Generator_ColumnVarNameInTable="columnIButtonId" msprop:Generator_ColumnPropNameInRow="IButtonId" msprop:Generator_ColumnPropNameInTable="IButtonIdColumn" msprop:Generator_UserColumnName="IButtonId" type="xs:string" default="0000000000000000" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Securnum" msprop:Generator_TableClassName="SecurnumDataTable" msprop:Generator_TableVarName="tableSecurnum" msprop:Generator_TablePropName="Securnum" msprop:Generator_RowDeletingName="SecurnumRowDeleting" msprop:Generator_UserTableName="Securnum" msprop:Generator_RowChangingName="SecurnumRowChanging" msprop:Generator_RowEvHandlerName="SecurnumRowChangeEventHandler" msprop:Generator_RowDeletedName="SecurnumRowDeleted" msprop:Generator_RowEvArgName="SecurnumRowChangeEvent" msprop:Generator_RowChangedName="SecurnumRowChanged" msprop:Generator_RowClassName="SecurnumRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="SecurnumId" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnSecurnumId" msprop:Generator_ColumnPropNameInRow="SecurnumId" msprop:Generator_ColumnPropNameInTable="SecurnumIdColumn" msprop:Generator_UserColumnName="SecurnumId" type="xs:int" />
+              <xs:element name="AuthPhoneNum" msprop:Generator_ColumnVarNameInTable="columnAuthPhoneNum" msprop:Generator_ColumnPropNameInRow="AuthPhoneNum" msprop:Generator_ColumnPropNameInTable="AuthPhoneNumColumn" msprop:Generator_UserColumnName="AuthPhoneNum" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AutoGeofencing" msprop:Generator_TableClassName="AutoGeofencingDataTable" msprop:Generator_TableVarName="tableAutoGeofencing" msprop:Generator_TablePropName="AutoGeofencing" msprop:Generator_RowDeletingName="AutoGeofencingRowDeleting" msprop:Generator_UserTableName="AutoGeofencing" msprop:Generator_RowChangingName="AutoGeofencingRowChanging" msprop:Generator_RowEvHandlerName="AutoGeofencingRowChangeEventHandler" msprop:Generator_RowDeletedName="AutoGeofencingRowDeleted" msprop:Generator_RowEvArgName="AutoGeofencingRowChangeEvent" msprop:Generator_RowChangedName="AutoGeofencingRowChanged" msprop:Generator_RowClassName="AutoGeofencingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="DeactivateBy" msprop:Generator_ColumnVarNameInTable="columnDeactivateBy" msprop:Generator_ColumnPropNameInRow="DeactivateBy" msprop:Generator_ColumnPropNameInTable="DeactivateByColumn" msprop:Generator_UserColumnName="DeactivateBy" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Active" msprop:Generator_ColumnVarNameInTable="columnActive" msprop:Generator_ColumnPropNameInRow="Active" msprop:Generator_ColumnPropNameInTable="ActiveColumn" msprop:Generator_UserColumnName="Active" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="ActivationTimeout" msprop:Generator_ColumnVarNameInTable="columnActivationTimeout" msprop:Generator_ColumnPropNameInRow="ActivationTimeout" msprop:Generator_ColumnPropNameInTable="ActivationTimeoutColumn" msprop:Generator_UserColumnName="ActivationTimeout" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="Priority" msprop:Generator_ColumnVarNameInTable="columnPriority" msprop:Generator_ColumnPropNameInRow="Priority" msprop:Generator_ColumnPropNameInTable="PriorityColumn" msprop:Generator_UserColumnName="Priority" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Event" msprop:Generator_ColumnVarNameInTable="columnEvent" msprop:Generator_ColumnPropNameInRow="Event" msprop:Generator_ColumnPropNameInTable="EventColumn" msprop:Generator_UserColumnName="Event" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Radius" msprop:Generator_ColumnVarNameInTable="columnRadius" msprop:Generator_ColumnPropNameInRow="Radius" msprop:Generator_ColumnPropNameInTable="RadiusColumn" msprop:Generator_UserColumnName="Radius" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="Reserved1" msprop:Generator_ColumnVarNameInTable="columnReserved1" msprop:Generator_ColumnPropNameInRow="Reserved1" msprop:Generator_ColumnPropNameInTable="Reserved1Column" msprop:Generator_UserColumnName="Reserved1" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Reserved2" msprop:Generator_ColumnVarNameInTable="columnReserved2" msprop:Generator_ColumnPropNameInRow="Reserved2" msprop:Generator_ColumnPropNameInTable="Reserved2Column" msprop:Generator_UserColumnName="Reserved2" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OperatorTimeStep" msprop:Generator_TableClassName="OperatorTimeStepDataTable" msprop:Generator_TableVarName="tableOperatorTimeStep" msprop:Generator_TablePropName="OperatorTimeStep" msprop:Generator_RowDeletingName="OperatorTimeStepRowDeleting" msprop:Generator_UserTableName="OperatorTimeStep" msprop:Generator_RowChangingName="OperatorTimeStepRowChanging" msprop:Generator_RowEvHandlerName="OperatorTimeStepRowChangeEventHandler" msprop:Generator_RowDeletedName="OperatorTimeStepRowDeleted" msprop:Generator_RowEvArgName="OperatorTimeStepRowChangeEvent" msprop:Generator_RowChangedName="OperatorTimeStepRowChanged" msprop:Generator_RowClassName="OperatorTimeStepRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="TimeStep" msprop:Generator_ColumnVarNameInTable="columnTimeStep" msprop:Generator_ColumnPropNameInRow="TimeStep" msprop:Generator_ColumnPropNameInTable="TimeStepColumn" msprop:Generator_UserColumnName="TimeStep" type="xs:unsignedInt" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OperatorsList" msprop:Generator_TableClassName="OperatorsListDataTable" msprop:Generator_TableVarName="tableOperatorsList" msprop:Generator_TablePropName="OperatorsList" msprop:Generator_RowDeletingName="OperatorsListRowDeleting" msprop:Generator_UserTableName="OperatorsList" msprop:Generator_RowChangingName="OperatorsListRowChanging" msprop:Generator_RowEvHandlerName="OperatorsListRowChangeEventHandler" msprop:Generator_RowDeletedName="OperatorsListRowDeleted" msprop:Generator_RowEvArgName="OperatorsListRowChangeEvent" msprop:Generator_RowChangedName="OperatorsListRowChanged" msprop:Generator_RowClassName="OperatorsListRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="OperatorId" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnOperatorId" msprop:Generator_ColumnPropNameInRow="OperatorId" msprop:Generator_ColumnPropNameInTable="OperatorIdColumn" msprop:Generator_UserColumnName="OperatorId" type="xs:int" />
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SSMSWTime" msprop:Generator_TableClassName="SSMSWTimeDataTable" msprop:Generator_TableVarName="tableSSMSWTime" msprop:Generator_TablePropName="SSMSWTime" msprop:Generator_RowDeletingName="SSMSWTimeRowDeleting" msprop:Generator_UserTableName="SSMSWTime" msprop:Generator_RowChangingName="SSMSWTimeRowChanging" msprop:Generator_RowEvHandlerName="SSMSWTimeRowChangeEventHandler" msprop:Generator_RowDeletedName="SSMSWTimeRowDeleted" msprop:Generator_RowEvArgName="SSMSWTimeRowChangeEvent" msprop:Generator_RowChangedName="SSMSWTimeRowChanged" msprop:Generator_RowClassName="SSMSWTimeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="WeekTime" msprop:Generator_ColumnVarNameInTable="columnWeekTime" msprop:Generator_ColumnPropNameInRow="WeekTime" msprop:Generator_ColumnPropNameInTable="WeekTimeColumn" msprop:Generator_UserColumnName="WeekTime" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sModes" msprop:Generator_TableClassName="sModesDataTable" msprop:Generator_TableVarName="tablesModes" msprop:Generator_TablePropName="sModes" msprop:Generator_RowDeletingName="sModesRowDeleting" msprop:Generator_UserTableName="sModes" msprop:Generator_RowChangingName="sModesRowChanging" msprop:Generator_RowEvHandlerName="sModesRowChangeEventHandler" msprop:Generator_RowDeletedName="sModesRowDeleted" msprop:Generator_RowEvArgName="sModesRowChangeEvent" msprop:Generator_RowChangedName="sModesRowChanged" msprop:Generator_RowClassName="sModesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ModeId" msprop:Generator_ColumnVarNameInTable="columnModeId" msprop:Generator_ColumnPropNameInRow="ModeId" msprop:Generator_ColumnPropNameInTable="ModeIdColumn" msprop:Generator_UserColumnName="ModeId" type="xs:unsignedShort" />
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="MinPeriod" msprop:Generator_ColumnVarNameInTable="columnMinPeriod" msprop:Generator_ColumnPropNameInRow="MinPeriod" msprop:Generator_ColumnPropNameInTable="MinPeriodColumn" msprop:Generator_UserColumnName="MinPeriod" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="MinDistance" msprop:Generator_ColumnVarNameInTable="columnMinDistance" msprop:Generator_ColumnPropNameInRow="MinDistance" msprop:Generator_ColumnPropNameInTable="MinDistanceColumn" msprop:Generator_UserColumnName="MinDistance" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="MinAngle" msprop:Generator_ColumnVarNameInTable="columnMinAngle" msprop:Generator_ColumnPropNameInRow="MinAngle" msprop:Generator_ColumnPropNameInTable="MinAngleColumn" msprop:Generator_UserColumnName="MinAngle" type="xs:unsignedShort" minOccurs="0" />
+              <xs:element name="MinSavedRecords" msprop:Generator_ColumnVarNameInTable="columnMinSavedRecords" msprop:Generator_ColumnPropNameInRow="MinSavedRecords" msprop:Generator_ColumnPropNameInTable="MinSavedRecordsColumn" msprop:Generator_UserColumnName="MinSavedRecords" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="SendPeriod" msprop:Generator_ColumnVarNameInTable="columnSendPeriod" msprop:Generator_ColumnPropNameInRow="SendPeriod" msprop:Generator_ColumnPropNameInTable="SendPeriodColumn" msprop:Generator_UserColumnName="SendPeriod" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="SmsWeekTime" msprop:Generator_ColumnVarNameInTable="columnSmsWeekTime" msprop:Generator_ColumnPropNameInRow="SmsWeekTime" msprop:Generator_ColumnPropNameInTable="SmsWeekTimeColumn" msprop:Generator_UserColumnName="SmsWeekTime" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HomeOperator" msprop:Generator_TableClassName="HomeOperatorDataTable" msprop:Generator_TableVarName="tableHomeOperator" msprop:Generator_TablePropName="HomeOperator" msprop:Generator_RowDeletingName="HomeOperatorRowDeleting" msprop:Generator_UserTableName="HomeOperator" msprop:Generator_RowChangingName="HomeOperatorRowChanging" msprop:Generator_RowEvHandlerName="HomeOperatorRowChangeEventHandler" msprop:Generator_RowDeletedName="HomeOperatorRowDeleted" msprop:Generator_RowEvArgName="HomeOperatorRowChangeEvent" msprop:Generator_RowChangedName="HomeOperatorRowChanged" msprop:Generator_RowClassName="HomeOperatorRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="HomeOperator" msprop:Generator_ColumnVarNameInTable="columnHomeOperator" msprop:Generator_ColumnPropNameInRow="HomeOperator" msprop:Generator_ColumnPropNameInTable="HomeOperatorColumn" msprop:Generator_UserColumnName="HomeOperator" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Gsm" msprop:Generator_TableClassName="GsmDataTable" msprop:Generator_TableVarName="tableGsm" msprop:Generator_TablePropName="Gsm" msprop:Generator_RowDeletingName="GsmRowDeleting" msprop:Generator_UserTableName="Gsm" msprop:Generator_RowChangingName="GsmRowChanging" msprop:Generator_RowEvHandlerName="GsmRowChangeEventHandler" msprop:Generator_RowDeletedName="GsmRowDeleted" msprop:Generator_RowEvArgName="GsmRowChangeEvent" msprop:Generator_RowChangedName="GsmRowChanged" msprop:Generator_RowClassName="GsmRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="AnswerAuto" msprop:Generator_ColumnVarNameInTable="columnAnswerAuto" msprop:Generator_ColumnPropNameInRow="AnswerAuto" msprop:Generator_ColumnPropNameInTable="AnswerAutoColumn" msprop:Generator_UserColumnName="AnswerAuto" type="xs:unsignedByte" />
+              <xs:element name="TransferProtocol" msprop:Generator_ColumnVarNameInTable="columnTransferProtocol" msprop:Generator_ColumnPropNameInRow="TransferProtocol" msprop:Generator_ColumnPropNameInTable="TransferProtocolColumn" msprop:Generator_UserColumnName="TransferProtocol" type="xs:unsignedByte" />
+              <xs:element name="MinSavedRecords" msprop:Generator_ColumnVarNameInTable="columnMinSavedRecords" msprop:Generator_ColumnPropNameInRow="MinSavedRecords" msprop:Generator_ColumnPropNameInTable="MinSavedRecordsColumn" msprop:Generator_UserColumnName="MinSavedRecords" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Eventnum" msprop:Generator_TableClassName="EventnumDataTable" msprop:Generator_TableVarName="tableEventnum" msprop:Generator_TablePropName="Eventnum" msprop:Generator_RowDeletingName="EventnumRowDeleting" msprop:Generator_UserTableName="Eventnum" msprop:Generator_RowChangingName="EventnumRowChanging" msprop:Generator_RowEvHandlerName="EventnumRowChangeEventHandler" msprop:Generator_RowDeletedName="EventnumRowDeleted" msprop:Generator_RowEvArgName="EventnumRowChangeEvent" msprop:Generator_RowChangedName="EventnumRowChanged" msprop:Generator_RowClassName="EventnumRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="EventnumId" msdata:AutoIncrement="true" msdata:Caption="SecurnumId" msprop:Generator_ColumnVarNameInTable="columnEventnumId" msprop:Generator_ColumnPropNameInRow="EventnumId" msprop:Generator_ColumnPropNameInTable="EventnumIdColumn" msprop:Generator_UserColumnName="EventnumId" type="xs:int" />
+              <xs:element name="AuthPhoneNum" msprop:Generator_ColumnVarNameInTable="columnAuthPhoneNum" msprop:Generator_ColumnPropNameInRow="AuthPhoneNum" msprop:Generator_ColumnPropNameInTable="AuthPhoneNumColumn" msprop:Generator_UserColumnName="AuthPhoneNum" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SmsEvent" msprop:Generator_TableClassName="SmsEventDataTable" msprop:Generator_TableVarName="tableSmsEvent" msprop:Generator_TablePropName="SmsEvent" msprop:Generator_RowDeletingName="SmsEventRowDeleting" msprop:Generator_UserTableName="SmsEvent" msprop:Generator_RowChangingName="SmsEventRowChanging" msprop:Generator_RowEvHandlerName="SmsEventRowChangeEventHandler" msprop:Generator_RowDeletedName="SmsEventRowDeleted" msprop:Generator_RowEvArgName="SmsEventRowChangeEvent" msprop:Generator_RowChangedName="SmsEventRowChanged" msprop:Generator_RowClassName="SmsEventRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="EventnumId" msdata:AutoIncrement="true" msdata:Caption="SecurnumId" msprop:Generator_ColumnVarNameInTable="columnEventnumId" msprop:Generator_ColumnPropNameInRow="EventnumId" msprop:Generator_ColumnPropNameInTable="EventnumIdColumn" msprop:Generator_UserColumnName="EventnumId" type="xs:int" />
+              <xs:element name="Eventnum" msprop:Generator_ColumnVarNameInTable="columnEventnum" msprop:Generator_ColumnPropNameInRow="Eventnum" msprop:Generator_ColumnPropNameInTable="EventnumColumn" msprop:Generator_UserColumnName="Eventnum" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Enable" msdata:Caption="AuthPhoneNum" msprop:Generator_ColumnVarNameInTable="columnEnable" msprop:Generator_ColumnPropNameInRow="Enable" msprop:Generator_ColumnPropNameInTable="EnableColumn" msprop:Generator_UserColumnName="Enable" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="NumberIndex" msprop:Generator_ColumnVarNameInTable="columnNumberIndex" msprop:Generator_ColumnPropNameInRow="NumberIndex" msprop:Generator_ColumnPropNameInTable="NumberIndexColumn" msprop:Generator_UserColumnName="NumberIndex" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnPropNameInTable="TextColumn" msprop:Generator_UserColumnName="Text" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SMSEventCurNum" msprop:Generator_TableClassName="SMSEventCurNumDataTable" msprop:Generator_TableVarName="tableSMSEventCurNum" msprop:Generator_TablePropName="SMSEventCurNum" msprop:Generator_RowDeletingName="SMSEventCurNumRowDeleting" msprop:Generator_UserTableName="SMSEventCurNum" msprop:Generator_RowChangingName="SMSEventCurNumRowChanging" msprop:Generator_RowEvHandlerName="SMSEventCurNumRowChangeEventHandler" msprop:Generator_RowDeletedName="SMSEventCurNumRowDeleted" msprop:Generator_RowEvArgName="SMSEventCurNumRowChangeEvent" msprop:Generator_RowChangedName="SMSEventCurNumRowChanged" msprop:Generator_RowClassName="SMSEventCurNumRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CurRowIndex" msprop:Generator_ColumnVarNameInTable="columnCurRowIndex" msprop:Generator_ColumnPropNameInRow="CurRowIndex" msprop:Generator_ColumnPropNameInTable="CurRowIndexColumn" msprop:Generator_UserColumnName="CurRowIndex" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SleepTMO" msprop:Generator_TableClassName="SleepTMODataTable" msprop:Generator_TableVarName="tableSleepTMO" msprop:Generator_TablePropName="SleepTMO" msprop:Generator_RowDeletingName="SleepTMORowDeleting" msprop:Generator_UserTableName="SleepTMO" msprop:Generator_RowChangingName="SleepTMORowChanging" msprop:Generator_RowEvHandlerName="SleepTMORowChangeEventHandler" msprop:Generator_RowDeletedName="SleepTMORowDeleted" msprop:Generator_RowEvArgName="SleepTMORowChangeEvent" msprop:Generator_RowChangedName="SleepTMORowChanged" msprop:Generator_RowClassName="SleepTMORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="SleepTMO" msprop:Generator_ColumnVarNameInTable="columnSleepTMO" msprop:Generator_ColumnPropNameInRow="SleepTMO" msprop:Generator_ColumnPropNameInTable="SleepTMOColumn" msprop:Generator_UserColumnName="SleepTMO" type="xs:unsignedShort" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DismissTS" msprop:Generator_TableClassName="DismissTSDataTable" msprop:Generator_TableVarName="tableDismissTS" msprop:Generator_TablePropName="DismissTS" msprop:Generator_RowDeletingName="DismissTSRowDeleting" msprop:Generator_UserTableName="DismissTS" msprop:Generator_RowChangingName="DismissTSRowChanging" msprop:Generator_RowEvHandlerName="DismissTSRowChangeEventHandler" msprop:Generator_RowDeletedName="DismissTSRowDeleted" msprop:Generator_RowEvArgName="DismissTSRowChangeEvent" msprop:Generator_RowChangedName="DismissTSRowChanged" msprop:Generator_RowClassName="DismissTSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="DismissTS" msdata:Caption="SleepTMO" msprop:Generator_ColumnVarNameInTable="columnDismissTS" msprop:Generator_ColumnPropNameInRow="DismissTS" msprop:Generator_ColumnPropNameInTable="DismissTSColumn" msprop:Generator_UserColumnName="DismissTS" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EcoDrivingDefaults" msprop:Generator_TableClassName="EcoDrivingDefaultsDataTable" msprop:Generator_TableVarName="tableEcoDrivingDefaults" msprop:Generator_TablePropName="EcoDrivingDefaults" msprop:Generator_RowDeletingName="EcoDrivingDefaultsRowDeleting" msprop:Generator_UserTableName="EcoDrivingDefaults" msprop:Generator_RowChangingName="EcoDrivingDefaultsRowChanging" msprop:Generator_RowEvHandlerName="EcoDrivingDefaultsRowChangeEventHandler" msprop:Generator_RowDeletedName="EcoDrivingDefaultsRowDeleted" msprop:Generator_RowEvArgName="EcoDrivingDefaultsRowChangeEvent" msprop:Generator_RowChangedName="EcoDrivingDefaultsRowChanged" msprop:Generator_RowClassName="EcoDrivingDefaultsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfileId" msprop:Generator_ColumnVarNameInTable="columnProfileId" msprop:Generator_ColumnPropNameInRow="ProfileId" msprop:Generator_ColumnPropNameInTable="ProfileIdColumn" msprop:Generator_UserColumnName="ProfileId" type="xs:short" />
+              <xs:element name="MaxAccelerationForce" msprop:Generator_ColumnVarNameInTable="columnMaxAccelerationForce" msprop:Generator_ColumnPropNameInRow="MaxAccelerationForce" msprop:Generator_ColumnPropNameInTable="MaxAccelerationForceColumn" msprop:Generator_UserColumnName="MaxAccelerationForce" type="xs:double" minOccurs="0" />
+              <xs:element name="MaxBrakingForce" msprop:Generator_ColumnVarNameInTable="columnMaxBrakingForce" msprop:Generator_ColumnPropNameInRow="MaxBrakingForce" msprop:Generator_ColumnPropNameInTable="MaxBrakingForceColumn" msprop:Generator_UserColumnName="MaxBrakingForce" type="xs:double" minOccurs="0" />
+              <xs:element name="MaxCorneringAngle" msprop:Generator_ColumnVarNameInTable="columnMaxCorneringAngle" msprop:Generator_ColumnPropNameInRow="MaxCorneringAngle" msprop:Generator_ColumnPropNameInTable="MaxCorneringAngleColumn" msprop:Generator_UserColumnName="MaxCorneringAngle" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Profile" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="System_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:System" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Geofencing_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Geofencing" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Frame_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Frame" />
+      <xs:field xpath="mstns:FrameId" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="GPRS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GPRS" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Sms_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Sms" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="IO_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:IO" />
+      <xs:field xpath="mstns:IOId" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Record_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Record" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Scenarios_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Scenarios" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Trip_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Trip" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="IButtonList_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:IButtonList" />
+      <xs:field xpath="mstns:IButtonListId" />
+    </xs:unique>
+    <xs:unique name="IButtonListKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:IButtonList" />
+      <xs:field xpath="mstns:ProfileId" />
+      <xs:field xpath="mstns:IButtonListId" />
+    </xs:unique>
+    <xs:unique name="SecurnumKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Securnum" />
+      <xs:field xpath="mstns:ProfileId" />
+      <xs:field xpath="mstns:SecurnumId" />
+    </xs:unique>
+    <xs:unique name="AutoGeofencing_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AutoGeofencing" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="OperatorTimeStep_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:OperatorTimeStep" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="OperatorsListKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:OperatorsList" />
+      <xs:field xpath="mstns:ProfileId" />
+      <xs:field xpath="mstns:OperatorId" />
+    </xs:unique>
+    <xs:unique name="SSMSWTime_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SSMSWTime" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="sModesKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:sModes" />
+      <xs:field xpath="mstns:ModeId" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="HomeOperator_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HomeOperator" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Gsm_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Gsm" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="Eventnum_SecurnumKey1" msdata:ConstraintName="SecurnumKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Eventnum" />
+      <xs:field xpath="mstns:ProfileId" />
+      <xs:field xpath="mstns:EventnumId" />
+    </xs:unique>
+    <xs:unique name="SmsEvent_SecurnumKey1" msdata:ConstraintName="SecurnumKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SmsEvent" />
+      <xs:field xpath="mstns:ProfileId" />
+      <xs:field xpath="mstns:EventnumId" />
+    </xs:unique>
+    <xs:unique name="Constraint11" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SleepTMO" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="DismissTS_Constraint11" msdata:ConstraintName="Constraint11" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DismissTS" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:unique name="EcoDrivingDefaults_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EcoDrivingDefaults" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:unique>
+    <xs:keyref name="FK_Profile_GreenDriving" refer="Constraint1" msprop:rel_Generator_UserChildTable="EcoDrivingDefaults" msprop:rel_Generator_ChildPropName="GetEcoDrivingDefaultsRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_GreenDriving" msprop:rel_Generator_RelationVarName="relationFK_Profile_GreenDriving" msprop:rel_Generator_ParentPropName="ProfileRow" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:EcoDrivingDefaults" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_DismissTS" refer="Constraint1" msprop:rel_Generator_UserChildTable="DismissTS" msprop:rel_Generator_ChildPropName="GetDismissTSRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_DismissTS" msprop:rel_Generator_RelationVarName="relationFK_Profile_DismissTS" msprop:rel_Generator_UserParentTable="Profile" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:DismissTS" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_SleepTMO" refer="Constraint1" msprop:rel_Generator_UserChildTable="SleepTMO" msprop:rel_Generator_ChildPropName="GetSleepTMORows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_SleepTMO" msprop:rel_Generator_RelationVarName="relationFK_Profile_SleepTMO" msprop:rel_Generator_ParentPropName="ProfileRow" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:SleepTMO" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_SmsEvent" refer="Constraint1" msprop:rel_Generator_UserChildTable="SmsEvent" msprop:rel_Generator_ChildPropName="GetSmsEventRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_SmsEvent" msprop:rel_Generator_RelationVarName="relationFK_Profile_SmsEvent" msprop:rel_Generator_ParentPropName="ProfileRow">
+      <xs:selector xpath=".//mstns:SmsEvent" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Evennum" refer="Constraint1" msprop:rel_Generator_UserChildTable="Eventnum" msprop:rel_Generator_ChildPropName="GetEventnumRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_Evennum" msprop:rel_Generator_RelationVarName="relationFK_Profile_Evennum" msprop:rel_Generator_ParentPropName="ProfileRow">
+      <xs:selector xpath=".//mstns:Eventnum" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Gsm" refer="Constraint1" msprop:rel_Generator_UserChildTable="Gsm" msprop:rel_Generator_ChildPropName="GetGsmRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_Gsm" msprop:rel_Generator_RelationVarName="relationFK_Profile_Gsm" msprop:rel_Generator_ParentPropName="ProfileRow">
+      <xs:selector xpath=".//mstns:Gsm" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_HomeOperator" refer="Constraint1" msprop:rel_Generator_UserChildTable="HomeOperator" msprop:rel_Generator_ChildPropName="GetHomeOperatorRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_HomeOperator" msprop:rel_Generator_RelationVarName="relationFK_Profile_HomeOperator" msprop:rel_Generator_UserParentTable="Profile">
+      <xs:selector xpath=".//mstns:HomeOperator" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_sModes" refer="Constraint1" msprop:rel_Generator_UserChildTable="sModes" msprop:rel_Generator_ChildPropName="GetsModesRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_sModes" msprop:rel_Generator_RelationVarName="relationFK_Profile_sModes" msprop:rel_Generator_UserParentTable="Profile">
+      <xs:selector xpath=".//mstns:sModes" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_SmsWTime" refer="Constraint1" msprop:rel_Generator_UserChildTable="SSMSWTime" msprop:rel_Generator_ChildPropName="GetSSMSWTimeRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_SmsWTime" msprop:rel_Generator_RelationVarName="relationFK_Profile_SmsWTime" msprop:rel_Generator_UserParentTable="Profile" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:SSMSWTime" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_HomeOperator_OperatorsList" refer="HomeOperator_Constraint1" msprop:rel_Generator_UserChildTable="OperatorsList" msprop:rel_Generator_ChildPropName="GetOperatorsListRows" msprop:rel_Generator_ParentPropName="HomeOperatorRow" msprop:rel_Generator_UserRelationName="FK_HomeOperator_OperatorsList" msprop:rel_Generator_RelationVarName="relationFK_HomeOperator_OperatorsList" msprop:rel_Generator_UserParentTable="HomeOperator">
+      <xs:selector xpath=".//mstns:OperatorsList" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_HomeOperator_Operators" refer="HomeOperator_Constraint1" msprop:rel_Generator_UserChildTable="OperatorTimeStep" msprop:rel_Generator_ChildPropName="GetOperatorTimeStepRows" msprop:rel_Generator_ParentPropName="HomeOperatorRow" msprop:rel_Generator_UserRelationName="FK_HomeOperator_Operators" msprop:rel_Generator_RelationVarName="relationFK_HomeOperator_Operators" msprop:rel_Generator_UserParentTable="HomeOperator">
+      <xs:selector xpath=".//mstns:OperatorTimeStep" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Securnum" refer="Constraint1" msprop:rel_Generator_UserChildTable="Securnum" msprop:rel_Generator_ChildPropName="GetSecurnumRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_Securnum" msprop:rel_Generator_RelationVarName="relationFK_Profile_Securnum" msprop:rel_Generator_UserParentTable="Profile">
+      <xs:selector xpath=".//mstns:Securnum" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_IButton" refer="Constraint1" msprop:rel_Generator_UserChildTable="IButtonList" msprop:rel_Generator_ChildPropName="GetIButtonListRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_IButton" msprop:rel_Generator_RelationVarName="relationFK_Profile_IButton" msprop:rel_Generator_ParentPropName="ProfileRow" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:IButtonList" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Trip" refer="Constraint1" msprop:rel_Generator_UserChildTable="Trip" msprop:rel_Generator_ChildPropName="GetTripRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_Trip" msprop:rel_Generator_RelationVarName="relationFK_Profile_Trip" msprop:rel_Generator_ParentPropName="ProfileRow" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:Trip" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Scenarios" refer="Constraint1" msprop:rel_Generator_UserChildTable="Scenarios" msprop:rel_Generator_ChildPropName="GetScenariosRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_Scenarios" msprop:rel_Generator_RelationVarName="relationFK_Profile_Scenarios" msprop:rel_Generator_ParentPropName="ProfileRow" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:Scenarios" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Records" refer="Constraint1" msprop:rel_Generator_UserChildTable="Record" msprop:rel_Generator_ChildPropName="GetRecordRows" msprop:rel_Generator_UserParentTable="Profile" msprop:rel_Generator_UserRelationName="FK_Profile_Records" msprop:rel_Generator_RelationVarName="relationFK_Profile_Records" msprop:rel_Generator_ParentPropName="ProfileRow" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:Record" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_IO" refer="Constraint1" msprop:rel_Generator_UserChildTable="IO" msprop:rel_Generator_ChildPropName="GetIORows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_IO" msprop:rel_Generator_RelationVarName="relationFK_Profile_IO" msprop:rel_Generator_UserParentTable="Profile" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:IO" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Sms" refer="Constraint1" msprop:rel_Generator_UserChildTable="Sms" msprop:rel_Generator_ChildPropName="GetSmsRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_Sms" msprop:rel_Generator_RelationVarName="relationFK_Profile_Sms" msprop:rel_Generator_UserParentTable="Profile" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:Sms" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Gprs" refer="Constraint1" msprop:rel_Generator_UserChildTable="GPRS" msprop:rel_Generator_ChildPropName="GetGPRSRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_Gprs" msprop:rel_Generator_RelationVarName="relationFK_Profile_Gprs" msprop:rel_Generator_UserParentTable="Profile" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:GPRS" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Geofencing_Frame" refer="Geofencing_Constraint1" msdata:ConstraintOnly="true">
+      <xs:selector xpath=".//mstns:Frame" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Geofence" refer="Constraint1" msprop:rel_Generator_UserChildTable="Geofencing" msprop:rel_Generator_ChildPropName="GetGeofencingRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_Geofence" msprop:rel_Generator_RelationVarName="relationFK_Profile_Geofence" msprop:rel_Generator_UserParentTable="Profile" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:Geofencing" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+    <xs:keyref name="FK_Profile_Sys" refer="Constraint1" msprop:rel_Generator_UserChildTable="System" msprop:rel_Generator_ChildPropName="GetSystemRows" msprop:rel_Generator_ParentPropName="ProfileRow" msprop:rel_Generator_UserRelationName="FK_Profile_System" msprop:rel_Generator_RelationVarName="relationFK_Profile_System" msprop:rel_Generator_UserParentTable="Profile" msdata:RelationName="FK_Profile_System" msdata:UpdateRule="None">
+      <xs:selector xpath=".//mstns:System" />
+      <xs:field xpath="mstns:ProfileId" />
+    </xs:keyref>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Profile_AutoGeofence" msdata:parent="Profile" msdata:child="AutoGeofencing" msdata:parentkey="ProfileId" msdata:childkey="ProfileId" msprop:Generator_UserChildTable="AutoGeofencing" msprop:Generator_ChildPropName="GetAutoGeofencingRows" msprop:Generator_UserParentTable="Profile" msprop:Generator_UserRelationName="Profile_AutoGeofence" msprop:Generator_RelationVarName="relationProfile_AutoGeofence" msprop:Generator_ParentPropName="ProfileRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

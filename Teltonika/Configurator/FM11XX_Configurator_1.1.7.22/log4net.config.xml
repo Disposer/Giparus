@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <appender name="LogFileAppender" type="log4net.Appender.FileAppender">
+    <file value="log-file.log" />
+    <appendToFile value="false" />
+    <layout type="log4net.Layout.PatternLayout">
+      <header value="[Header]&#xD;&#xA;" />
+      <footer value="[Footer]&#xD;&#xA;" />
+      <conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+    </layout>
+  </appender>
+  <root>
+    <level value="ALL"/>
+    <appender-ref ref="LogFileAppender"/>
+  </root>
+  <logger name="Main" additivity="false">
+    <appender-ref ref="LogFileAppender" />
+    <level value="ALL" />
+  </logger>
+  <logger name="Protocol.SerialPort" additivity="false">
+    <appender-ref ref="LogFileAppender" />
+    <level value="ALL" />
+  </logger>
+  <logger name="SerialPort.Monitor" additivity="false">
+    <appender-ref ref="LogFileAppender" />
+    <level value="OFF" />
+  </logger>
+  <logger name="Protocol.BufferLogger" additivity="false">
+    <appender-ref ref="LogFileAppender" />
+    <level value="ALL" />
+  </logger>
+  <logger name="Protocol.PacketLogger" additivity="false">
+    <appender-ref ref="LogFileAppender" />
+    <level value="ALL" />
+  </logger>
+  <logger name="Protocol.PanelInfo" additivity="false">
+    <appender-ref ref="LogFileAppender" />
+    <level value="ALL" />
+  </logger>
+</log4net>
