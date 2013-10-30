@@ -13,12 +13,13 @@ namespace Giparus.Data.Model
         public long Id { get; set; }
         public NodeType Type { get; set; }
         public TagCollection Tags { get; set; }
-        public long? ChangeSetId { get; set; }
-        public bool? Visible { get; set; }
-        public DateTime? TimeStamp { get; set; }
-        public int? Version { get; set; }
-        public long? UserId { get; set; }
+        public long ChangeSetId { get; set; }
+        public bool Visible { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public int Version { get; set; }
+        public long UserId { get; set; }
         public string User { get; set; }
+        public long LocalChangeset { get; set; }
         #endregion
 
         public override string ToString()

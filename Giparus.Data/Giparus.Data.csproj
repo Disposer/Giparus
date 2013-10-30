@@ -50,6 +50,7 @@
     <Compile Include="Connector\Mongo\DateTimeStringSerializer.cs" />
     <Compile Include="Model\INode.cs" />
     <Compile Include="Model\IWay.cs" />
+    <Compile Include="Model\Global.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\MongoModel\GeoType.cs" />
     <Compile Include="Model\MongoModel\Node.cs" />

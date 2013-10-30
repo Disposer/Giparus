@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Giparus.Data.Model.SqlModel;
+﻿using System.Collections.Generic;
 
 namespace Giparus.Data.Model
 {

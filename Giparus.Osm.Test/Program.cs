@@ -5,7 +5,7 @@
         private static void Main()
         {
             var test = new OsmTest();
-            test.TestReadOsmXmlFile();
+            test.TestReadOsmXmlFileAndInsertWithUpdate();
         }
     }
 }

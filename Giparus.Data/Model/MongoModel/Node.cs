@@ -1,13 +1,11 @@
-﻿using Microsoft.SqlServer.Types;
-
-namespace Giparus.Data.Model.MongoModel
+﻿namespace Giparus.Data.Model.MongoModel
 {
     public class Node : NodeBase, INode
     {
         #region Properties
         public double[] LatLong { get; set; }
-        public double Latitude { get; set; }
-        public double Longtitude { get; set; } 
+        public double Latitude { get { return LatLong[0]; } }
+        public double Longtitude { get { return LatLong[1]; } }
         #endregion
 
         #region .ctor
@@ -16,8 +14,6 @@ namespace Giparus.Data.Model.MongoModel
 
         public void MakePosition(double latitude, double longtitude)
         {
-            this.Latitude = latitude;
-            this.Longtitude = longtitude;
             this.LatLong = new[] { latitude, longtitude };
         }
 

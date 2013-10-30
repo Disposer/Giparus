@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Giparus.Data.Connector.Mongo;
 
 namespace Giparus.Data.Model.MongoModel
 {
@@ -41,6 +42,38 @@ namespace Giparus.Data.Model.MongoModel
             {
                 var node = nodes[nodeIndex];
                 this.Nodes.Add(new[] { node.Latitude, node.Longtitude });
+            }
+        }
+
+        public void MakeWay(DataConnector connector)
+        {
+            if (this.NodeIds.Count == 1) this.Shape = GeoType.Point;
+            else if (this.NodeIds.First().Equals(this.NodeIds.Last()))
+            {
+                if (this.NodeIds.Count == 2) this.Shape = GeoType.Point;
+                if (this.NodeIds.Count == 3)
+                {
+                    this.Shape = GeoType.LineString;
+
+                    var index = this.NodeIds.Count - 1;
+                    this.NodeIds.RemoveAt(index);
+                }
+                else this.Shape = GeoType.Polygon;
+            }
+            else this.Shape = GeoType.LineString;
+
+            this.Nodes = new List<double[]>(this.NodeIds.Count);
+
+            //foreach (var nodeIndex in this.NodeIds)
+            //{
+            //    var node = connector.GetSpecificNode(nodeIndex);
+            //    this.Nodes.Add(new[] { node.Latitude, node.Longtitude });
+            //}
+
+            var nodes = connector.GetSpecificNodes(this.NodeIds);
+            foreach (var node in nodes)
+            {
+                this.Nodes.Add(new[] { node.LatLong[0], node.LatLong[1] });
             }
         }
 

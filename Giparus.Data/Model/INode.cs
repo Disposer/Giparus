@@ -2,8 +2,8 @@
 {
     public interface INode
     {
-        double Latitude { get; set; }
-        double Longtitude { get; set; } 
+        double Latitude { get; }
+        double Longtitude { get; }
         void MakePosition(double latitude, double longtitude);
     }
 }

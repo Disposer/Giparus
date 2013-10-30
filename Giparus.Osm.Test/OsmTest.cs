@@ -25,11 +25,9 @@ namespace Giparus.Osm.Test
             reader.Read();
 
             stopWatch.Stop();
-            var s1 = stopWatch.ElapsedMilliseconds;
-
+            var totalTime1 = stopWatch.ElapsedMilliseconds;
 
             stopWatch = Stopwatch.StartNew();
-            //_database.CreateTable(false, typeof(Node));
 
             DataConnector.Instance.Nodes.InsertBatch(reader.Nodes.Values);
             DataConnector.Instance.Ways.InsertBatch(reader.Ways.Values);
@@ -44,7 +42,33 @@ namespace Giparus.Osm.Test
             //}
 
             stopWatch.Stop();
-            var s2 = stopWatch.ElapsedMilliseconds;
+            var totalTime12 = stopWatch.ElapsedMilliseconds;
+        }
+
+        public void TestReadOsmXmlFileAndInsert()
+        {
+            var stopWatch = Stopwatch.StartNew();
+            //const string file = @"Map\Pasdaran.osm";
+            const string file = @"E:\Research\Maps\Map Files\geofabrik.de.asia\iran-latest.osm";
+            var reader = new OsmXmlReader();
+            reader.Open(file);
+            reader.ReadAndInsertInBulk(DataConnector.Instance);
+
+            stopWatch.Stop();
+            var totalTime = stopWatch.ElapsedMilliseconds;
+        }
+
+        public void TestReadOsmXmlFileAndInsertWithUpdate()
+        {
+            var stopWatch = Stopwatch.StartNew();
+            //const string file = @"Map\Pasdaran.osm";
+            const string file = @"E:\Research\Maps\Map Files\geofabrik.de.asia\iran-latest.osm";
+            var reader = new OsmXmlReader();
+            reader.Open(file);
+            reader.ReadAndInsertAndCheck(DataConnector.Instance);
+
+            stopWatch.Stop();
+            var totalTime = stopWatch.ElapsedMilliseconds;
         }
 
         public void CreateDbConnection()

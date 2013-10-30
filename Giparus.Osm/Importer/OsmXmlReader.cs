@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Giparus.Data.Connector.Mongo;
 using Giparus.Data.Model;
 using System;
 using System.Xml;
@@ -76,7 +77,176 @@ namespace Giparus.Osm.Importer
             }
         }
 
-        private static Node ReadNode(XmlReader reader)
+        public void ReadAndInsertInBulk(DataConnector connector)
+        {
+            _reader.MoveToContent();
+            _reader.ReadStartElement("osm");
+            _reader.Skip();
+
+            if (_reader.Name == "bound")
+            {
+                _reader.ReadStartElement("bound");
+                _reader.Skip();
+            }
+
+            var nodeList = new List<Node>(100000);
+            var wayList = new List<Way>(1000);
+            var relationList = new List<Relation>(10000);
+
+            var firstWay = true;
+            var firstRelation = true;
+            while (_reader.IsStartElement())
+            {
+                switch (_reader.Name)
+                {
+                    case "node":
+                        var node = ReadNode(_reader);
+                        nodeList.Add(node);
+                        if (nodeList.Count == 100000)
+                        {
+                            connector.InsertBatch(nodeList);
+                            nodeList = new List<Node>(100000);
+                        }
+                        break;
+                    case "way":
+                        if (firstWay)
+                        {
+                            connector.InsertBatch(nodeList);
+                            firstWay = false;
+                        }
+                        var way = ReadWayAndNodes(_reader, connector);
+                        wayList.Add(way);
+                        if (wayList.Count == 1000)
+                        {
+                            connector.InsertBatch(wayList);
+                            wayList = new List<Way>(1000);
+                        }
+                        break;
+                    case "relation":
+                        if (firstRelation)
+                        {
+                            connector.InsertBatch(wayList);
+                            firstRelation = false;
+                        }
+                        var relation = ReadRelation(_reader);
+                        relationList.Add(relation);
+                        if (relationList.Count == 10000)
+                        {
+                            connector.InsertBatch(relationList);
+                            relationList = new List<Relation>(10000);
+                        }
+                        break;
+                    default:
+                        _reader.Skip();
+                        break;
+                }
+            }
+
+            connector.InsertBatch(relationList);
+        }
+
+        public void ReadAndInsertAndCheck(DataConnector connector)
+        {
+            _reader.MoveToContent();
+            _reader.ReadStartElement("osm");
+            _reader.Skip();
+
+            if (_reader.Name == "bound")
+            {
+                _reader.ReadStartElement("bound");
+                _reader.Skip();
+            }
+
+            var nodeList = new List<Node>(100000);
+            var wayList = new List<Way>(1000);
+            var relationList = new List<Relation>(10000);
+
+            var firstWay = true;
+            var firstRelation = true;
+            var localChangeset = connector.UpdateChangeset();
+
+            while (_reader.IsStartElement())
+            {
+                switch (_reader.Name)
+                {
+                    case "node":
+                        var node = ReadNode(_reader);
+                        node.LocalChangeset = localChangeset;
+
+                        var entity = connector.GetNodeChangeset(node.Id);
+                        if (entity == null)
+                        {
+                            nodeList.Add(node);
+                            if (nodeList.Count != 100000) continue;
+
+                            connector.InsertBatch(nodeList);
+                            nodeList = new List<Node>(100000);
+                        }
+                        else
+                        {
+                            if (entity.ChangeSetId == node.ChangeSetId) continue;
+                            connector.UpdateNode(node);
+                        }
+                        break;
+                    case "way":
+                        if (firstWay)
+                        {
+                            connector.InsertBatch(nodeList);
+                            firstWay = false;
+                        }
+                        var way = ReadWayAndNodes(_reader, connector);
+                        way.LocalChangeset = localChangeset;
+
+                        var wayEntity = connector.GetWayChangeset(way.Id);
+                        if (wayEntity == null)
+                        {
+                            wayList.Add(way);
+                            if (nodeList.Count != 1000) continue;
+
+                            connector.InsertBatch(wayList);
+                            wayList = new List<Way>(1000);
+                        }
+                        else
+                        {
+                            if (wayEntity.ChangeSetId == way.ChangeSetId) continue;
+                            connector.UpdateWay(way);
+                        }
+                        break;
+                    case "relation":
+                        if (firstRelation)
+                        {
+                            connector.InsertBatch(wayList);
+                            firstRelation = false;
+                        }
+                        var relation = ReadRelation(_reader);
+                        relation.LocalChangeset = localChangeset;
+
+                        var relationEntity = connector.GetRelationChangeset(relation.Id);
+                        if (relationEntity == null)
+                        {
+                            relationList.Add(relation);
+                            if (nodeList.Count != 10000) continue;
+
+                            connector.InsertBatch(nodeList);
+                            relationList = new List<Relation>(10000);
+                        }
+                        else
+                        {
+                            if (relationEntity.ChangeSetId == relation.ChangeSetId) continue;
+                            connector.UpdateRelation(relation);
+                        }
+                        break;
+                    default:
+                        _reader.Skip();
+                        break;
+                }
+            }
+
+            connector.InsertBatch(relationList);
+        }
+
+
+        private Node ReadNode(XmlReader reader)
         {
             var nodeElement = XNode.ReadFrom(reader) as XElement;
             if (nodeElement == null) throw new InvalidOperationException("Empty node");
@@ -93,6 +263,22 @@ namespace Giparus.Osm.Importer
             return node;
         }
 
+        private Way ReadWayAndNodes(XmlReader reader, DataConnector connector)
+        {
+            var nodeElement = XNode.ReadFrom(reader) as XElement;
+            if (nodeElement == null) throw new InvalidOperationException("Empty node");
+
+            var way = ReadNodeBase<Way>(nodeElement);
+            way.Tags = ReadNodeTags(nodeElement);
+            way.NodeIds = ReadWayNodeIds(nodeElement);
+
+            way.MakeWay(connector);
+
+            reader.Skip();
+
+            return way;
+        }
+
         private Way ReadWay(XmlReader reader)
         {
             var nodeElement = XNode.ReadFrom(reader) as XElement;
@@ -102,14 +288,14 @@ namespace Giparus.Osm.Importer
             way.Tags = ReadNodeTags(nodeElement);
             way.NodeIds = ReadWayNodeIds(nodeElement);
 
-            way.MakeWay(this.Nodes);
+            way.MakeWay(Nodes);
 
             reader.Skip();
 
             return way;
         }
 
-        private static Relation ReadRelation(XmlReader reader)
+        private Relation ReadRelation(XmlReader reader)
         {
             var nodeElement = XNode.ReadFrom(reader) as XElement;
             if (nodeElement == null) throw new InvalidOperationException("Empty node");
