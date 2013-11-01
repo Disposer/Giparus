@@ -56,12 +56,12 @@
     <Compile Include="Model\MongoModel\Node.cs" />
     <Compile Include="Model\MongoModel\Relation.cs" />
     <Compile Include="Model\MongoModel\Way.cs" />
-    <Compile Include="Model\SqlModel\Node.cs" />
+    <Compile Include="Model\SqlModel\SqlNode.cs" />
     <Compile Include="Model\NodeBase.cs" />
     <Compile Include="Model\NodeType.cs" />
-    <Compile Include="Model\SqlModel\Relation.cs" />
+    <Compile Include="Model\SqlModel\SqlRelation.cs" />
     <Compile Include="Model\TagCollection.cs" />
-    <Compile Include="Model\SqlModel\Way.cs" />
+    <Compile Include="Model\SqlModel\SqlWay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +70,9 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Connector\Sql\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

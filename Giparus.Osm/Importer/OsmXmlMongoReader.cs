@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Giparus.Data.Connector.Mongo;
-using Giparus.Data.Model;
 using System;
 using System.Xml;
 using System.Xml.Linq;
@@ -11,9 +10,11 @@ namespace Giparus.Osm.Importer
     using Data.Model;
     using Data.Model.MongoModel;
 
-    public class OsmXmlReader
+
+    public class OsmXmlMongoReader : IOsmXmlReader
     {
         #region Fields
+        private readonly DataConnector _connector;
         private XmlReader _reader;
 
         public Dictionary<long, INode> Nodes;
@@ -27,6 +28,10 @@ namespace Giparus.Osm.Importer
 
 
         #region .ctor
+        public OsmXmlMongoReader()
+        {
+            _connector = DataConnector.Instance;
+        }
         #endregion
 
         public void Open(string path)
@@ -77,7 +82,7 @@ namespace Giparus.Osm.Importer
             }
         }
 
-        public void ReadAndInsertInBulk(DataConnector connector)
+        public void ReadAndInsertInBulk()
         {
             _reader.MoveToContent();
             _reader.ReadStartElement("osm");
@@ -104,35 +109,35 @@ namespace Giparus.Osm.Importer
                         nodeList.Add(node);
                         if (nodeList.Count == 100000)
                         {
-                            connector.InsertBatch(nodeList);
+                            _connector.InsertBatch(nodeList);
                             nodeList = new List<Node>(100000);
                         }
                         break;
                     case "way":
                         if (firstWay)
                         {
-                            connector.InsertBatch(nodeList);
+                            _connector.InsertBatch(nodeList);
                             firstWay = false;
                         }
-                        var way = ReadWayAndNodes(_reader, connector);
+                        var way = ReadWayAndNodes(_reader, _connector);
                         wayList.Add(way);
                         if (wayList.Count == 1000)
                         {
-                            connector.InsertBatch(wayList);
+                            _connector.InsertBatch(wayList);
                             wayList = new List<Way>(1000);
                         }
                         break;
                     case "relation":
                         if (firstRelation)
                         {
-                            connector.InsertBatch(wayList);
+                            _connector.InsertBatch(wayList);
                             firstRelation = false;
                         }
                         var relation = ReadRelation(_reader);
                         relationList.Add(relation);
                         if (relationList.Count == 10000)
                         {
-                            connector.InsertBatch(relationList);
+                            _connector.InsertBatch(relationList);
                             relationList = new List<Relation>(10000);
                         }
                         break;
@@ -142,10 +147,10 @@ namespace Giparus.Osm.Importer
                 }
             }
 
-            connector.InsertBatch(relationList);
+            _connector.InsertBatch(relationList);
         }
 
-        public void ReadAndInsertAndCheck(DataConnector connector)
+        public void ReadAndInsertAndCheck()
         {
             _reader.MoveToContent();
             _reader.ReadStartElement("osm");
@@ -163,77 +168,77 @@ namespace Giparus.Osm.Importer
 
             var firstWay = true;
             var firstRelation = true;
-            var localChangeset = connector.UpdateChangeset();
+            var localChangeset = _connector.UpdateChangeset();
 
             while (_reader.IsStartElement())
             {
                 switch (_reader.Name)
                 {
                     case "node":
-                        var node = ReadNode(_reader);
+                        var node = this.ReadNode(_reader);
                         node.LocalChangeset = localChangeset;
 
-                        var entity = connector.GetNodeChangeset(node.Id);
+                        var entity = _connector.GetNodeChangeset(node.Id);
                         if (entity == null)
                         {
                             nodeList.Add(node);
                             if (nodeList.Count != 100000) continue;
 
-                            connector.InsertBatch(nodeList);
+                            _connector.InsertBatch(nodeList);
                             nodeList = new List<Node>(100000);
                         }
                         else
                         {
-                            if (entity.ChangeSetId == node.ChangeSetId) continue;
-                            connector.UpdateNode(node);
+                            if (entity.ChangesetId == node.ChangesetId) continue;
+                            _connector.UpdateNode(node);
                         }
                         break;
                     case "way":
                         if (firstWay)
                         {
-                            connector.InsertBatch(nodeList);
+                            _connector.InsertBatch(nodeList);
                             firstWay = false;
                         }
-                        var way = ReadWayAndNodes(_reader, connector);
+                        var way = this.ReadWayAndNodes(_reader, _connector);
                         way.LocalChangeset = localChangeset;
 
-                        var wayEntity = connector.GetWayChangeset(way.Id);
+                        var wayEntity = _connector.GetWayChangeset(way.Id);
                         if (wayEntity == null)
                         {
                             wayList.Add(way);
                             if (nodeList.Count != 1000) continue;
 
-                            connector.InsertBatch(wayList);
+                            _connector.InsertBatch(wayList);
                             wayList = new List<Way>(1000);
                         }
                         else
                         {
-                            if (wayEntity.ChangeSetId == way.ChangeSetId) continue;
-                            connector.UpdateWay(way);
+                            if (wayEntity.ChangesetId == way.ChangesetId) continue;
+                            _connector.UpdateWay(way);
                         }
                         break;
                     case "relation":
                         if (firstRelation)
                         {
-                            connector.InsertBatch(wayList);
+                            _connector.InsertBatch(wayList);
                             firstRelation = false;
                         }
-                        var relation = ReadRelation(_reader);
+                        var relation = this.ReadRelation(_reader);
                         relation.LocalChangeset = localChangeset;
 
-                        var relationEntity = connector.GetRelationChangeset(relation.Id);
+                        var relationEntity = _connector.GetRelationChangeset(relation.Id);
                         if (relationEntity == null)
                         {
                             relationList.Add(relation);
                             if (nodeList.Count != 10000) continue;
 
-                            connector.InsertBatch(nodeList);
+                            _connector.InsertBatch(nodeList);
                             relationList = new List<Relation>(10000);
                         }
                         else
                         {
-                            if (relationEntity.ChangeSetId == relation.ChangeSetId) continue;
-                            connector.UpdateRelation(relation);
+                            if (relationEntity.ChangesetId == relation.ChangesetId) continue;
+                            _connector.UpdateRelation(relation);
                         }
                         break;
                     default:
@@ -242,7 +247,7 @@ namespace Giparus.Osm.Importer
                 }
             }
 
-            connector.InsertBatch(relationList);
+            _connector.InsertBatch(relationList);
         }
 
 
@@ -326,7 +331,7 @@ namespace Giparus.Osm.Importer
             instance.TimeStamp = string.IsNullOrEmpty(timestamp) ? DateTime.MinValue : DateTime.Parse(timestamp);
             instance.UserId = string.IsNullOrEmpty(uid) ? 0 : long.Parse(uid);
             instance.User = user;
-            instance.ChangeSetId = string.IsNullOrEmpty(changesetId) ? 0 : long.Parse(changesetId);
+            instance.ChangesetId = string.IsNullOrEmpty(changesetId) ? 0 : long.Parse(changesetId);
 
             return instance;
         }

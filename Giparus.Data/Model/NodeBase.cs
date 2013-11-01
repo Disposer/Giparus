@@ -13,7 +13,7 @@ namespace Giparus.Data.Model
         public long Id { get; set; }
         public NodeType Type { get; set; }
         public TagCollection Tags { get; set; }
-        public long ChangeSetId { get; set; }
+        public long ChangesetId { get; set; }
         public bool Visible { get; set; }
         public DateTime TimeStamp { get; set; }
         public int Version { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Giparus.Data.Model.SqlModel
 {
-    public class Relation : NodeBase
+    public class SqlRelation : NodeBase
     {
         public IList<Member> Members { get; set; }
     }

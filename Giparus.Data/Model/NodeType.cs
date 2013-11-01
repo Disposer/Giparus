@@ -1,4 +1,4 @@
 ﻿namespace Giparus.Data.Model
 {
-    public enum NodeType { Node, Way, Relation, Undefined }
+    public enum NodeType : byte { Node, Way, Relation, Undefined }
 }

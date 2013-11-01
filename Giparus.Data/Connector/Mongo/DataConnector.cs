@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using Giparus.Data.Model;
-using Giparus.Data.Model.MongoModel;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
@@ -79,10 +77,8 @@ namespace Giparus.Data.Connector.Mongo
 
         private void EnsureIndex()
         {
-            //this.Nodes.EnsureIndex("Id");
             this.Nodes.EnsureIndex(IndexKeys.GeoSpatialSpherical("LatLong"));
-            //this.Ways.EnsureIndex("Id");
-            //this.Relations.EnsureIndex("Id");
+            this.Ways.EnsureIndex(IndexKeys.GeoSpatial("Nodes"));
         }
         #endregion
 
@@ -140,7 +136,6 @@ namespace Giparus.Data.Connector.Mongo
         //        Query<PqItem>.GTE(e => e.Date, starTime),
         //        Query<PqItem>.LTE(e => e.Date, endTime),
         //    });
-
         //    return this.PqItems.Find(query);
         //}
 
@@ -216,6 +211,24 @@ namespace Giparus.Data.Connector.Mongo
         public void UpdateRelation(Relation entity)
         {
             this.Relations.Save(entity);
+        }
+
+        public MongoCursor<Node> GetAllNodesFromChangeset(long localChangeset)
+        {
+            var query = Query<Node>.GTE(e => e.LocalChangeset, localChangeset);
+            return this.Nodes.Find(query);
+        }
+
+        public MongoCursor<Way> GetAllWaysFromChangeset(long localChangeset)
+        {
+            var query = Query<Way>.GTE(e => e.LocalChangeset, localChangeset);
+            return this.Ways.Find(query);
+        }
+
+        public MongoCursor<Relation> GetAllRelationsFromChangeset(long localChangeset)
+        {
+            var query = Query<Relation>.GTE(e => e.LocalChangeset, localChangeset);
+            return this.Relations.Find(query);
         }
     }
 }

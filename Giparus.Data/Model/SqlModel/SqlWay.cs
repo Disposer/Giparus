@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Giparus.Data.Model.MongoModel;
 using Microsoft.SqlServer.Types;
+using MongoDB.Driver;
 
 namespace Giparus.Data.Model.SqlModel
 {
-    public class Way : NodeBase, IWay
+    public class SqlWay : NodeBase, IWay
     {
         #region Fields
         #endregion
@@ -16,7 +18,7 @@ namespace Giparus.Data.Model.SqlModel
         #endregion
 
         #region .ctor
-        private Way() { base.Type = NodeType.Way; }
+        public SqlWay() { base.Type = NodeType.Way; }
         #endregion
 
         public void MakeWay(Dictionary<long, INode> nodes)
@@ -61,6 +63,58 @@ namespace Giparus.Data.Model.SqlModel
             {
                 var nodeId = this.NodeIds[index];
                 var node = nodes[nodeId];
+                builder.AddLine(node.Latitude, node.Longtitude);
+            }
+
+            builder.EndFigure();
+            builder.EndGeography();
+
+            this.Lines = builder.ConstructedGeography;
+        }
+
+        public void MakeWay(MongoCollection<Node> nodes)
+        {
+            var builder = new SqlGeographyBuilder();
+            builder.SetSrid(base.Srid);
+
+            if (this.NodeIds.Count == 1)
+            {
+                this.Shape = OpenGisGeographyType.Point;
+                builder.BeginGeography(OpenGisGeographyType.Point);
+            }
+            else if (this.NodeIds.First().Equals(this.NodeIds.Last()))
+            {
+                if (this.NodeIds.Count == 2)
+                {
+                    builder.BeginGeography(OpenGisGeographyType.Point);
+                    this.Shape = OpenGisGeographyType.Point;
+                }
+                if (this.NodeIds.Count == 3)
+                {
+                    builder.BeginGeography(OpenGisGeographyType.LineString);
+                    this.Shape = OpenGisGeographyType.LineString;
+
+                    var index = this.NodeIds.Count - 1;
+                    this.NodeIds.RemoveAt(index);
+                }
+                else
+                {
+                    this.Shape = OpenGisGeographyType.Polygon;
+                    builder.BeginGeography(OpenGisGeographyType.Polygon);
+                }
+            }
+            else
+            {
+                this.Shape = OpenGisGeographyType.LineString;
+                builder.BeginGeography(OpenGisGeographyType.LineString);
+            }
+
+            var one = nodes.FindOneById(this.NodeIds[0]);
+            builder.BeginFigure(one.Latitude, one.Longtitude);
+            for (var index = 1; index < this.NodeIds.Count; index++)
+            {
+                var nodeId = this.NodeIds[index];
+                var node = nodes.FindOneById(nodeId);
                 builder.AddLine(node.Latitude, node.Longtitude);
             }
 

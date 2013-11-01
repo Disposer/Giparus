@@ -2,7 +2,7 @@
 
 namespace Giparus.Data.Model.SqlModel
 {    
-    public class Node : NodeBase, INode
+    public class SqlNode : NodeBase, INode
     {
         #region Properties
         public SqlGeography Position { get; set; }
@@ -11,7 +11,7 @@ namespace Giparus.Data.Model.SqlModel
         #endregion
 
         #region .ctor
-        public Node() { base.Type = NodeType.Node; }
+        public SqlNode() { base.Type = NodeType.Node; }
         #endregion
 
         public void MakePosition(double latitude, double longtitude)
@@ -24,6 +24,20 @@ namespace Giparus.Data.Model.SqlModel
             builder.BeginGeography(OpenGisGeographyType.Point);
 
             builder.BeginFigure(latitude, longtitude);
+            builder.EndFigure();
+
+            builder.EndGeography();
+
+            this.Position = builder.ConstructedGeography;
+        }
+
+        public void MakePosition()
+        {
+            var builder = new SqlGeographyBuilder();
+            builder.SetSrid(base.Srid);
+            builder.BeginGeography(OpenGisGeographyType.Point);
+
+            builder.BeginFigure(this.Latitude, this.Longtitude);
             builder.EndFigure();
 
             builder.EndGeography();
